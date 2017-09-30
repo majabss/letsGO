@@ -1,6 +1,6 @@
 import { LoginPage } from './../login/login';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 
 /**
  * Generated class for the SettingsPage page.
@@ -25,7 +25,7 @@ export class SettingsPage {
    */
   public pushNotifications: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams) {
     this.declineInvitationsFromNotFriends = false;
     this.pushNotifications = false;
   }
@@ -38,7 +38,8 @@ export class SettingsPage {
    * Calls Log out 
    */
   public signout() {
-    this.navCtrl.setRoot(LoginPage);
+    this.app.getRootNav().setRoot(LoginPage);
+    // this.navCtrl.setRoot(LoginPage);
   }
 
   /**

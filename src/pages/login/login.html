@@ -1,59 +1,69 @@
-<div>
-  <ion-card>
-    <ion-card-header (click)="clickLoginCard()">
-      Log in
-    </ion-card-header>
-    <ion-card-content *ngIf="loginVisible">
-      <ion-list>
-        <ion-item>
-          <ion-label floating>Username</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+<ion-header>
+    
+    <ion-navbar>
+      <ion-title>Lets GO!</ion-title>
+    </ion-navbar>
+  
+</ion-header>
 
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-      </ion-list>
+<ion-content padding>
+  <div>
+    <ion-card>
+      <ion-card-header (click)="clickLoginCard()">
+        Log in
+      </ion-card-header>
+      <ion-card-content *ngIf="loginVisible">
+        <ion-list>
+          <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
 
-      <div padding>
-        <button ion-button outline (click)="login()" outline>Log In</button>
-      </div>
+          <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password"></ion-input>
+          </ion-item>
+        </ion-list>
 
-    </ion-card-content>
-  </ion-card>
+        <div padding>
+          <button ion-button outline (click)="login()" outline>Log In</button>
+        </div>
 
-  <ion-card>
-    <ion-card-header (click)="clickSigninCard()">
-      Sign in
-    </ion-card-header>
-    <ion-card-content *ngIf="signinVisible">
-      <ion-list>
-        <ion-item>
-          <ion-label floating>Username</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-        <ion-item>
-          <ion-label floating>E-Mail</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+    <ion-card>
+      <ion-card-header (click)="clickSigninCard()">
+        Sign in
+      </ion-card-header>
+      <ion-card-content *ngIf="signinVisible">
+        <ion-list>
+          <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label floating>Enter Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label floating>E-Mail</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label floating>Confirm password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-      </ion-list>
+          <ion-item>
+            <ion-label floating>Enter Password</ion-label>
+            <ion-input type="password"></ion-input>
+          </ion-item>
 
-      <div padding>
-        <button ion-button outline (click)="signin()" outline>Sign In</button>
-      </div>
+          <ion-item>
+            <ion-label floating>Confirm password</ion-label>
+            <ion-input type="password"></ion-input>
+          </ion-item>
+        </ion-list>
 
-    </ion-card-content>
-  </ion-card>
-</div>
+        <div padding>
+          <button ion-button outline (click)="signin()" outline>Sign In</button>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

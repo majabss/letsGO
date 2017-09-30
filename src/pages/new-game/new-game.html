@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>newGame</ion-title>
+    <ion-title>Start Game</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,7 +17,7 @@
   <ion-list>
     <ion-item>
       <ion-label>Friend</ion-label>
-      <ion-select [(ngModel)]="friend" >
+      <ion-select [(ngModel)]="friend">
           <ion-option *ngFor="let entry of friends" [value]="entry.id">{{entry.name}}</ion-option>
       </ion-select>
     </ion-item>
