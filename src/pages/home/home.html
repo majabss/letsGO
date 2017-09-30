@@ -1,17 +1,47 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <br>
+    <table>
+      <tr>
+        <td>{{ player }}</td>
+        <td>{{ scoreWeek }} ({{ scoreAlltime }})</td>
+      </tr>
+    </table>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-list-header>My Turn</ion-list-header>
+    <app-list-item
+      mainText="Maja"
+      additionalText="bla"
+      secondRowText="Running">
+    </app-list-item>
+  <ion-list-header>Invitations</ion-list-header>
+    <app-list-item
+      mainText="Jonas"
+      additionalText="bla"
+      secondRowText="Running">
+    </app-list-item>
+  <ion-list-header>Opponent's Turn</ion-list-header>
+    <app-list-item
+      mainText="Lars"
+      additionalText="bla"
+      secondRowText="Running">
+    </app-list-item>
+  <ion-list-header>Closed Games</ion-list-header>
+    <app-list-item
+      mainText="Jonas"
+      additionalText="bla"
+      secondRowText="Running">
+    </app-list-item>
+
+    <ion-fab right bottom>
+        <button ion-fab color="blue"><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list side="top">
+          <button ion-fab><ion-icon name="game-controller-a"></ion-icon></button>
+          <button ion-fab><ion-icon name="person-add"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
 </ion-content>
