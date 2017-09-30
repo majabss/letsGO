@@ -1,4 +1,4 @@
-import { LeaderboardResponse, LeaderboardEntry, LeaderboardData } from './../interfaces';
+import { LeaderboardEntry, LeaderboardData, Answer } from './../interfaces';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -15,8 +15,8 @@ export class LetsGOService {
 
     constructor(private techService: TechnischerService) { }
 
-    public leaderboardFriends(): LeaderboardResponse {
-        let response: LeaderboardResponse = {
+    public leaderboardFriends(): Answer {
+        let response: Answer = {
             success: true,
             message: '',
             data: {
@@ -37,8 +37,8 @@ export class LetsGOService {
         return response;
     }
 
-    public leaderboardWeekly(): LeaderboardResponse {
-        let response: LeaderboardResponse = {
+    public leaderboardWeekly(): Answer {
+        let response: Answer = {
             success: true,
             message: '',
             data: {
@@ -69,8 +69,8 @@ export class LetsGOService {
         return response;
     }  
     
-    public leaderboardAlltime(): LeaderboardResponse {
-        let response: LeaderboardResponse = {
+    public leaderboardAlltime(): Answer {
+        let response: Answer = {
             success: true,
             message: '',
             data: {
@@ -113,7 +113,7 @@ export class LetsGOService {
         return this.techService.getRequest('/player/homescreen?sessionkey=' + this.sessionKey);
     }
 
-    public leaderboard(type: string): Observable<LeaderboardResponse> {
+    public leaderboard(type: string): Observable<Answer> {
         return this.techService.getRequest('/player/ranking?sessionkey=' + this.sessionKey + "&type=" + type);
     }
 

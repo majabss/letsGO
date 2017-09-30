@@ -1,5 +1,5 @@
 import { TechnischerService } from './../../provider/technischer.service';
-import { LeaderboardResponse, LeaderboardEntry } from './../../interfaces';
+import { LeaderboardEntry } from './../../interfaces';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {LetsGOService} from './../../provider/letsGO.service';
@@ -21,6 +21,7 @@ export class LeaderboardPage {
   public leaderboardFriends: LeaderboardEntry[] = [];
   public leaderboardWeekly: LeaderboardEntry[] = [];
   public leaderboardAlltime: LeaderboardEntry[] = [];
+  public me: LeaderboardEntry;
   public leaderboardType: string = 'Weekly';
 
   constructor(public navCtrl: NavController, private go: LetsGOService, public navParams: NavParams) {
@@ -29,33 +30,26 @@ export class LeaderboardPage {
     // this.leaderboardAlltime = go.leaderboardAlltime();
 
     // Daten holen
-    this.go.leaderboard('weekly').subscribe(data => {
-      console.log(data.data.ranks);
-      // data.data.ranks.forEach(eintray => {
-      //   this.leaderboardWeekly.push(eintray);
-      // })
-      // this.leaderboardWeekly = data.data.ranks;
-      console.log(this.leaderboardWeekly);
+    this.go.leaderboard('weekly').subscribe((answer) => {
+      this.leaderboardAlltime = answer.data.data;
     },
     (err) => { 
       console.error(err);
     });
 
-    // this.go.leaderboard('alltime').subscribe(data => {
-    //   this.leaderboardAlltime = data.data.ranks;
-    //   console.log(data);
-    // },
-    // (err) => { 
-    //   console.error(err);
-    // });
+    this.go.leaderboard('alltime').subscribe(answer => {
+      this.leaderboardAlltime = answer.data.data;
+    },
+    (err) => { 
+      console.error(err);
+    });
 
-    // this.go.leaderboard('friends').subscribe(data => {
-    //   this.leaderboardFriends = data.data.ranks;
-    //   console.log(data);
-    // },
-    // (err) => { 
-    //   console.error(err);
-    // });
+    this.go.leaderboard('friends').subscribe(answer => {
+      this.leaderboardFriends = answer.data.data;
+    },
+    (err) => { 
+      console.error(err);
+    });
 
   }
 
