@@ -41,10 +41,11 @@ export class LeaderboardPage {
       this.leaderboardWeekly = answer.data.data;
       let entries: LeaderboardEntry[] = answer.data.data;
       entries.forEach(entry => {
-        if (entry.name = go.user) {
+        if (entry.name == go.user) {
           this.me = entry;
         }
       });
+      console.log('Weekly2', this.leaderboardWeekly);
     },
     (err) => {console.error(err);});
 
