@@ -14,6 +14,19 @@
 
 
 <ion-content padding>
+  <div padding>
+    <ion-segment [(ngModel)]="leaderboardType">
+      <ion-segment-button value="Friends">
+        Friends
+      </ion-segment-button>
+      <ion-segment-button value="Weekly">
+        Weekly
+      </ion-segment-button>
+      <ion-segment-button value="Alltime">
+        Alltime
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
   <ion-card>
     <ion-card-header>
@@ -33,21 +46,59 @@
     </ion-card-header>
   
     <ion-list>
-      <button ion-item *ngFor="let entry of leaderboardWeekly.data.ranks">
-        <table width="100%">
-          <tr>
-            <td width="30%">
-              {{entry.id}}
-            </td>
-            <td width="40%">
-              {{entry.name}}
-            </td>
-            <td width="30%" align="right">
-              {{entry.weeklypoints}}
-            </td>
-          </tr>
-        </table>
-      </button>
+        <div *ngIf="leaderboardType == 'Friends'">
+          <button ion-item *ngFor="let entry of leaderboardFriends.data.ranks">
+            <table width="100%">
+              <tr>
+                <td width="30%">
+                  {{entry.id}}
+                </td>
+                <td width="40%">
+                  {{entry.name}}
+                </td>
+                <td width="30%" align="right">
+                  {{entry.alltimepoints}}
+                </td>
+              </tr>
+            </table>
+          </button>
+        </div>
+        
+      <div *ngIf="leaderboardType == 'Weekly'">
+          <button ion-item *ngFor="let entry of leaderboardWeekly.data.ranks">
+            <table width="100%">
+              <tr>
+                <td width="30%">
+                  {{entry.id}}
+                </td>
+                <td width="40%">
+                  {{entry.name}}
+                </td>
+                <td width="30%" align="right">
+                  {{entry.weeklypoints}}
+                </td>
+              </tr>
+            </table>
+          </button>
+        </div>
+        
+      <div *ngIf="leaderboardType == 'Alltime'">
+          <button ion-item *ngFor="let entry of leaderboardAlltime.data.ranks">
+            <table width="100%">
+              <tr>
+                <td width="30%">
+                  {{entry.id}}
+                </td>
+                <td width="40%">
+                  {{entry.name}}
+                </td>
+                <td width="30%" align="right">
+                  {{entry.alltimepoints}}
+                </td>
+              </tr>
+            </table>
+          </button>
+        </div>
   
     </ion-list>
   </ion-card>

@@ -1,57 +1,59 @@
-<ion-card>
-  <ion-card-header>
-    Log in
-  </ion-card-header>
-  <ion-card-content *ngIf="loginVisible">
-    <ion-list>
-      <ion-item>
-        <ion-label>User</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
+<div>
+  <ion-card>
+    <ion-card-header (click)="loginCard()">
+      Log in
+    </ion-card-header>
+    <ion-card-content *ngIf="loginVisible">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-    </ion-list>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+      </ion-list>
 
-    <div padding>
-      <button block>Log In</button>
-    </div>
+      <div padding>
+        <button ion-button (click)="login()" outline>Log In</button>
+      </div>
 
-  </ion-card-content>
-</ion-card>
+    </ion-card-content>
+  </ion-card>
 
-<ion-card>
-    <ion-card-header>
+  <ion-card>
+    <ion-card-header (click)="signinCard()">
       Sign in
     </ion-card-header>
     <ion-card-content *ngIf="signinVisible">
       <ion-list>
         <ion-item>
-          <ion-label>User</ion-label>
+          <ion-label floating>Username</ion-label>
           <ion-input type="text"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label>Mail</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-  
+          <ion-label floating>E-Mail</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
         <ion-item>
-          <ion-label>Password</ion-label>
+          <ion-label floating>Enter Password</ion-label>
           <ion-input type="password"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label>Confirm password</ion-label>
+          <ion-label floating>Confirm password</ion-label>
           <ion-input type="password"></ion-input>
         </ion-item>
       </ion-list>
-  
+
       <div padding>
-        <button block>Sign In</button>
+        <button ion-button (click)="signin()" outline>Sign In</button>
       </div>
-  
+
     </ion-card-content>
   </ion-card>
+</div>
