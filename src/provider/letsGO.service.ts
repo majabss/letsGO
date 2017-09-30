@@ -7,26 +7,45 @@ import { TechnischerService } from './technischer.service';
 @Injectable()
 export class LetsGOService {
 
-  constructor(private techService: TechnischerService) { }
+    constructor(private techService: TechnischerService) { }
 
-  /**
-   * Anmeldung
-   */
-  public leaderboardWeekly(): LeaderboardResponse {
-      let response: LeaderboardResponse = {
-          success: true,
-          message: '',
-          data: {
+    public leaderboardFriends(): LeaderboardResponse {
+        let response: LeaderboardResponse = {
+            success: true,
+            message: '',
+            data: {
             ranks: [
                 {   id: "1",
                     name: "Lars",
                     alltimepoints: "123",
-                    weeklypoints: "42"
+                    weeklypoints: "99"
                 },
                 {   id: "2",
                     name: "Maja",
                     alltimepoints: "102",
+                    weeklypoints: "42"
+                }
+                ]
+            }
+        }
+        return response;
+    }
+
+    public leaderboardWeekly(): LeaderboardResponse {
+        let response: LeaderboardResponse = {
+            success: true,
+            message: '',
+            data: {
+            ranks: [
+                {   id: "1",
+                    name: "Lars",
+                    alltimepoints: "123",
                     weeklypoints: "99"
+                },
+                {   id: "2",
+                    name: "Maja",
+                    alltimepoints: "102",
+                    weeklypoints: "42"
                 },
                 {   id: "3",
                     name: "Jonas Ha.",
@@ -38,9 +57,41 @@ export class LetsGOService {
                     alltimepoints: "1",
                     weeklypoints: "0"
                 }
-              ]
-          }
-      }
-    return response;
-  }  
+                ]
+            }
+        }
+        return response;
+    }  
+    
+    public leaderboardAlltime(): LeaderboardResponse {
+        let response: LeaderboardResponse = {
+            success: true,
+            message: '',
+            data: {
+            ranks: [
+                {   id: "1",
+                    name: "Lars",
+                    alltimepoints: "123",
+                    weeklypoints: "99"
+                },
+                {   id: "2",
+                    name: "Maja",
+                    alltimepoints: "102",
+                    weeklypoints: "42"
+                },
+                {   id: "3",
+                    name: "Jonas Ha.",
+                    alltimepoints: "23",
+                    weeklypoints: "12"
+                },
+                {   id: "4",
+                    name: "Jonas Ri.",
+                    alltimepoints: "1",
+                    weeklypoints: "0"
+                }
+                ]
+            }
+        }
+        return response;
+    }  
 }
