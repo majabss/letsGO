@@ -1,18 +1,19 @@
-export interface LeaderboardResponse{
+export interface Answer {
     success: boolean,
     message: string,
-    data: LeaderboardData
-} 
+    data: any | HomeScreenData | LeaderboardData;
+}
 
 export interface LeaderboardData{
-    ranks: LeaderboardEntry[]
+    data: LeaderboardEntry[]
 } 
 
 export interface LeaderboardEntry{
     id: string,
     name: string,
-    alltimepoints: string,
-    weeklypoints: string
+    atp: string,
+    wp: string,
+    rank: string
 }
 
 export const enum PlayerTile {
@@ -36,12 +37,6 @@ export interface FieldEntry{
     koordX: number,
     koordY: number,
     status: number
-}
-
-export interface Answer {
-    success: boolean,
-    message: string,
-    data: any | HomeScreenData;
 }
 
 export interface HomeScreenData{

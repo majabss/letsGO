@@ -67,3 +67,12 @@ export const BASEPATH = 'http://172.16.2.131:8080';
 
 })
 export class AppModule {}
+
+export function showAlert(title: string, subTitle: string) {
+  let alert = this.alertCtrl.create({
+    title: title,
+    subTitle: subTitle,
+    buttons: ['OK']
+  });
+  alert.present();
+}

@@ -28,7 +28,10 @@ export class NewGamePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewGamePage');
+  }
+
+  public loadFriends() {
+    // this.goService.getFriends().subscribe()
   }
 
   public start(){

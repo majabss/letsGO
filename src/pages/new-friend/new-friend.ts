@@ -1,7 +1,7 @@
 import { LetsGOService } from './../../provider/letsGO.service';
-import { LeaderboardEntry } from './../../interfaces';
+import { LeaderboardEntry, Answer } from './../../interfaces';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the NewFriendPage page.
@@ -16,30 +16,57 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'new-friend.html',
 })
 export class NewFriendPage {
-  public friends: LeaderboardEntry[];
-  public aktFriend: LeaderboardEntry = null;
+  public friends: any[] = [];
+  public aktFriend: any = null;
+  public search: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private goService: LetsGOService) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private goService: LetsGOService, public alertCtrl: AlertController) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewFriendPage');
   }
 
-  search() {
-    this.friends = this.goService.leaderboardFriends().data.ranks;
+  public searchFriends() {
+    if (this.search && this.search != '') {
+      this.goService.searchFriends(this.search).subscribe(
+        (answer: Answer) => {
+          if (answer.success) {
+            this.friends = answer.data.data;
+            console.log(this.friends);
+          } else if (!answer.success) {
+            this.showAlert('Fehler', answer.message);
+          }
+        }
+      );
+    }
   }
 
-  selectFriend(friend: LeaderboardEntry) {
+  public addFriend() {
+    this.goService.addFriend(this.aktFriend.id).subscribe(
+      (data: Answer) => {
+        console.log(data);
+        if (data.success) {
+          console.log(data);
+        } else if (!data.success) {
+          this.showAlert('Fehler', data.message);
+        }
+      }
+    );
+  }
+
+  public selectFriend(friend: any) {
     this.aktFriend = friend;
   }
 
-  isActive(friend: LeaderboardEntry) {
+  public isActive(friend: LeaderboardEntry) {
     return this.aktFriend == friend;
   }
 
-  addFriend() {
-
+  public showAlert(title: string, subTitle: string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
   }
-
 }

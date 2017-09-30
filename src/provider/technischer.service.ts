@@ -18,7 +18,6 @@ export class TechnischerService {
   }
 
   public getRequest(ressourceAPI: string) {
-    console.log(BASEPATH + ressourceAPI);
     return this.http.get(BASEPATH + ressourceAPI).map((data) => data.json()).catch(
       (e) => {
         // Warum nur die Fehler zurück geben ?
