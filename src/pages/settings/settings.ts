@@ -15,7 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
+  public declineInvitationsFromNotFriends: boolean;
+  public pushNotifications: boolean;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.declineInvitationsFromNotFriends = false;
+    this.pushNotifications = false;
   }
 
   ionViewDidLoad() {
