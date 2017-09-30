@@ -1,46 +1,66 @@
 page-game {
 
 }
-body {
-    margin: 0;
-    padding: 0;
-  }
-  div {
-    overflow: hidden;
-    box-sizing: border-box;
-  }
-  .outer-grid {
-    position: relative;
-    float: left;
-    width: 33.3%;
-    padding-bottom: 33.3%;
-    border: 1px solid gray;
-    background-color: #9cc;
-  }
-  .outer-square {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 90%;
-    height: 90%;
-    background-color: #ccc;
-    margin: 5%;
-    display: -webkit-flex;
-    -webkit-flex-wrap: wrap;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .inner-grid {
-    width: 33.3%;
-    height: 33.3%;
-    border: 1px solid red;
-    display: table;
-  }
-  .inner-square {
-    line-height: 100%;
-    font-size: 50px;
-    font-weight: bold;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-  }
+
+.ellBlack {
+	border-radius: 50%;
+  align-content: center;
+  background: black;
+  width: 100%;
+  height: 100%;
+  border:2px solid black;    
+}
+.ellWhite {
+	border-radius: 50%;
+  align-content: center;
+  background: white;
+  width: 100%;
+  height: 100%; 
+  border:2px solid black;   
+}
+.ellGreen {
+	border-radius: 50%;
+  align-content: center;
+  background: white;
+  width: 100%;
+  height: 100%; 
+  border:2px solid green;   
+}
+.ellNone {
+	border-radius: 50%;
+  align-content: center;
+  background: white;
+  width: 100%;
+  height: 100%;  
+  border:2px solid white;   
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row;
+  justify-content: space-around;
+ 
+  line-height:30px;
+}
+.flex-item {
+  margin: 0px;
+  border: 1px solid black;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  flex: 1 0 auto;
+  height:auto;
+}
+.flex-item:before {
+  content:'';
+  float:left;
+  padding-top:100%;
+}
+

@@ -1,30 +1,42 @@
-export interface LeaderboardResponse{
+export interface Answer {
     success: boolean,
     message: string,
-    data: LeaderboardData
-} 
+    data: any | HomeScreenData | LeaderboardData;
+}
 
 export interface LeaderboardData{
-    ranks: LeaderboardEntry[]
+    data: LeaderboardEntry[]
 } 
 
 export interface LeaderboardEntry{
     id: string,
     name: string,
-    alltimepoints: string,
-    weeklypoints: string
+    atp: string,
+    wp: string,
+    rank: string
 }
 
 export const enum PlayerTile {
     FREE = 0,
     BLACK = 1,
-    WHITE = 2
+    WHITE = 2,
+    GREEN = 3
 }
 
-export interface Answer {
+export interface FieldResponse{
     success: boolean,
     message: string,
-    data: any | HomeScreenData;
+    data: FieldData
+}
+
+export interface FieldData{
+    gamefield: FieldEntry[]
+} 
+
+export interface FieldEntry{
+    koordX: number,
+    koordY: number,
+    status: number
 }
 
 export interface HomeScreenData{
