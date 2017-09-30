@@ -7,63 +7,61 @@
 </ion-header>
 
 <ion-content padding>
-  <div>
-    <ion-card>
-      <ion-card-header (click)="clickLoginCard()">
-        Log in
-      </ion-card-header>
-      <ion-card-content *ngIf="loginVisible">
-        <ion-list>
-          <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
+  <ion-card>
+    <ion-card-header (click)="clickLoginCard()">
+      Log in
+    </ion-card-header>
+    <ion-card-content *ngIf="loginVisible">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" [(ngModel)]="username"></ion-input>
+        </ion-item>
 
-          <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password"></ion-input>
-          </ion-item>
-        </ion-list>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </ion-list>
 
-        <div padding>
-          <button ion-button outline (click)="login()" outline>Log In</button>
-        </div>
+      <div padding>
+        <button ion-button outline (click)="login()" outline>Log In</button>
+      </div>
 
-      </ion-card-content>
-    </ion-card>
+    </ion-card-content>
+  </ion-card>
 
-    <ion-card>
-      <ion-card-header (click)="clickSigninCard()">
-        Sign in
-      </ion-card-header>
-      <ion-card-content *ngIf="signinVisible">
-        <ion-list>
-          <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
+  <ion-card>
+    <ion-card-header (click)="clickSigninCard()">
+      Sign in
+    </ion-card-header>
+    <ion-card-content *ngIf="signinVisible">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" [(ngModel)]="regusername"></ion-input>
+        </ion-item>
 
-          <ion-item>
-            <ion-label floating>E-Mail</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
+        <ion-item>
+          <ion-label floating>E-Mail</ion-label>
+          <ion-input type="email" [(ngModel)]="regemail"></ion-input>
+        </ion-item>
 
-          <ion-item>
-            <ion-label floating>Enter Password</ion-label>
-            <ion-input type="password"></ion-input>
-          </ion-item>
+        <ion-item>
+          <ion-label floating>Enter Password</ion-label>
+          <ion-input type="password" [(ngModel)]="regpassword"></ion-input>
+        </ion-item>
 
-          <ion-item>
-            <ion-label floating>Confirm password</ion-label>
-            <ion-input type="password"></ion-input>
-          </ion-item>
-        </ion-list>
+        <ion-item>
+          <ion-label floating>Confirm password</ion-label>
+          <ion-input type="password" [(ngModel)]="regpwasswordconfirm"></ion-input>
+        </ion-item>
+      </ion-list>
 
-        <div padding>
-          <button ion-button outline (click)="signin()" outline>Sign In</button>
-        </div>
+      <div padding>
+        <button ion-button outline (click)="signup()" outline>Sign Up</button>
+      </div>
 
-      </ion-card-content>
-    </ion-card>
-  </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

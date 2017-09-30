@@ -18,12 +18,14 @@ export class TechnischerService {
   }
 
   public getRequest(ressourceAPI: string) {
-    console.log(BASEPATH);
-    return this.http.get(BASEPATH + ressourceAPI, {headers: this.createAuthorizationHeader()}).map(data => data.json()).catch(
+    console.log(BASEPATH + ressourceAPI);
+    return this.http.get(BASEPATH + ressourceAPI).map((data) => data.json()).catch(
       (e) => {
-        if (e.status >= 400) {
-          return Observable.throw(e);
-        }
+        // Warum nur die Fehler zurück geben ?
+        // if (e.status >= 400) {
+        //   return Observable.throw(e);
+        // }
+        return Observable.throw(e);
       });
 
   }
