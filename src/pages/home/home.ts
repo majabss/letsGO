@@ -15,7 +15,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-<<<<<<< HEAD
   public player = 'Spieler 1';
   public scoreWeek = 500;
   public scoreAlltime = 1000;
@@ -24,14 +23,11 @@ export class HomePage {
   public opponentScore = 5000;
   public gameStatus = 'blabla';
 
-  constructor(public navCtrl: NavController) { }
-=======
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }
->>>>>>> d4abc2fe1db12ce3571bf0b4fb2f6377a4903d0d
 
 }
