@@ -18,6 +18,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class NewGamePage {
 
   public friends: LeaderboardEntry[];
+  public friend: string;
 
   constructor(public navCtrl: NavController, private goService: LetsGOService, public navParams: NavParams) {
   
