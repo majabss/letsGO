@@ -55,9 +55,9 @@ export class LoginPage {
         (err) => {
           this.showAlert('Fehler', 'Uhhh.... gar nicht gut...Frag die Profis');
         }
-      );
-
+      );      
     }
+    this.navCtrl.setRoot(TabsPage);
   }
 
   public signin(){
