@@ -1,3 +1,4 @@
+import { NewFriendPage } from './../new-friend/new-friend';
 import { NewGamePage } from './../new-game/new-game';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
@@ -37,11 +38,10 @@ export class HomePage {
 
   public newGame() {
     this.app.getRootNav().push(NewGamePage);
-    // this.navCtrl.push(NewGamePage);
   }
 
   public newFriend() {
-    // this.navCtrl.push(NewFriendPage);
+    this.app.getRootNav().push(NewFriendPage);
   }
 
 }

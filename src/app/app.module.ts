@@ -1,3 +1,4 @@
+import { NewFriendPage } from './../pages/new-friend/new-friend';
 import { NewGamePage } from './../pages/new-game/new-game';
 import { Http, HttpModule } from '@angular/http';
 import { TechnischerService } from './../provider/technischer.service';
@@ -33,7 +34,8 @@ export const BASEPATH = 'http://172.16.2.131:8080';
     LeaderboardPage,
     SettingsPage,
     GamePage,
-    NewGamePage
+    NewGamePage,
+    NewFriendPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ export const BASEPATH = 'http://172.16.2.131:8080';
     LeaderboardPage,
     SettingsPage,
     GamePage,
-    NewGamePage
+    NewGamePage,
+    NewFriendPage
   ],
   providers: [
     StatusBar,
