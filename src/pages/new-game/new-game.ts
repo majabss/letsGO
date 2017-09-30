@@ -1,3 +1,4 @@
+import { GamePage } from './../game/game';
 import { LetsGOService } from './../../provider/letsGO.service';
 import { LeaderboardEntry } from './../../interfaces';
 import { Component } from '@angular/core';
@@ -28,6 +29,10 @@ export class NewGamePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewGamePage');
+  }
+
+  public start(){
+    this.navCtrl.push(GamePage);
   }
 
 }
