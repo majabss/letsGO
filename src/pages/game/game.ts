@@ -18,9 +18,14 @@ import { PlayerTile } from '../../interfaces';
 export class GamePage {
 
   public board: PlayerTile[][];
+  public wert: boolean;
+  public boardSize: number;
+  public tileWidthHeight: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initBoard(9);
+    this.boardSize = 9;
+    this.tileWidthHeight = 255/this.boardSize;
+    this.initBoard(this.boardSize);
   }
 
   ionViewDidLoad() {
@@ -39,7 +44,12 @@ export class GamePage {
   }
 
   public setzen(i: number, j: number){
-    this.board[i][j] = PlayerTile.BLACK;
+    if(this.wert){
+      this.board[i][j] = PlayerTile.BLACK;
+    }else{
+      this.board[i][j] = PlayerTile.WHITE;
+    }
+    this.wert = !this.wert;
   }
 
 }

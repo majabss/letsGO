@@ -12,30 +12,19 @@
 
 </ion-header>
 
-
 <ion-content padding>
-
   <ion-card>
-    <!--<ion-card-content>
-      <div class="grid-container">
-        <div class="inner-grid" *ngFor="let row of board, let i = index">
-          <div class="inner-square" *ngFor="let entry of row, let j = index">
-              <div class="inner-square-left-top" ></div>
-              <div class="inner-square-right-top" ></div>
-          </div>
-          <div class="inner-square" *ngFor="let entry of row, let j = index">
-              <div class="inner-square-left-bottom" ></div>
-              <div class="inner-square-right-bottom" ></div>          
-          </div>
+    <ion-card-header>
+      <h2><b>Hallo</b></h2>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="flex-container" *ngFor="let row of board, let i = index">
+        <div class="flex-item" *ngFor="let entry of row, let j = index"  (click)="setzen(i, j)">
+          <div *ngIf="entry == 0" class="ellNone"></div>
+          <div *ngIf="entry == 1" class="ellWhite"></div>
+          <div *ngIf="entry == 2" class="ellBlack"></div>
         </div>
       </div>
-    </ion-card-content>-->
-
-    <ion-card-content>
-        <mycanvas width="100%"></mycanvas>
     </ion-card-content>
   </ion-card>
-
-  
-
 </ion-content>
