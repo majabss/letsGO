@@ -65,7 +65,7 @@
         </div>
         
       <div *ngIf="leaderboardType == 'Weekly'">
-          <button ion-item *ngFor="let entry of leaderboardWeekly.data.ranks">
+          <button ion-item *ngFor="let entry of leaderboardWeekly.data.ranks" (click)="addFriend(entry.id)">
             <table width="100%">
               <tr>
                 <td width="30%">
@@ -83,7 +83,7 @@
         </div>
         
       <div *ngIf="leaderboardType == 'Alltime'">
-          <button ion-item *ngFor="let entry of leaderboardAlltime.data.ranks">
+          <button ion-item *ngFor="let entry of leaderboardAlltime.data.ranks" (click)="addFriend(entry.id)">
             <table width="100%">
               <tr>
                 <td width="30%">
