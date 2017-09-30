@@ -18,11 +18,26 @@
     <ion-item>
       <ion-label>Friend</ion-label>
       <ion-select [(ngModel)]="friend">
-          <ion-option *ngFor="let entry of friends" [value]="entry.id">{{entry.name}}</ion-option>
+        <ion-option *ngFor="let entry of friends" [value]="entry.id">{{entry.name}}</ion-option>
       </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Board Size</ion-label>
+      <ion-select [(ngModel)]="size">
+        <ion-option value="9">9x9</ion-option>
+        <ion-option value="13">13x13</ion-option>
+        <ion-option value="19">19x19</ion-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Deadline</ion-label>
+      <ion-input type="number" [(ngModel)]="deadline"></ion-input>
     </ion-item>
   </ion-list>
 
   <button ion-button (click)="start()" outline>Start</button>
+  <button ion-button (click)="cancel()" outline>Cancel</button>
 
 </ion-content>
