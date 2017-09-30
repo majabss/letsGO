@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -37,7 +38,7 @@ export class SettingsPage {
    * Calls Sign out 
    */
   public signout() {
-    console.log('Sign out');
+    this.navCtrl.setRoot(LoginPage);
   }
 
   /**

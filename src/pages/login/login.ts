@@ -25,7 +25,6 @@ export class LoginPage {
 
   public login() {
     this.navCtrl.setRoot(TabsPage);
-    this.navCtrl.push(TabsPage);
   }
 
   public signin(){
