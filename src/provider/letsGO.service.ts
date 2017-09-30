@@ -144,4 +144,8 @@ export class LetsGOService {
     public addFriend(userid: string) {
         return this.techService.getRequest('/player/addfriend?sessionkey=' + this.sessionKey + '&userid=' + userid);
     }
+
+    public startGame(userid: string, time: string, size: string) {
+        return this.techService.getRequest('/game/create?sessionkey=' + this.sessionKey + '&userid=' + userid + '&time=' + time + '&size' + size);
+    }
 }
