@@ -1,3 +1,5 @@
+import { LetsGOService } from './../../provider/letsGO.service';
+import { LeaderboardEntry } from './../../interfaces';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -15,7 +17,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NewGamePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public friends: LeaderboardEntry[];
+
+  constructor(public navCtrl: NavController, private goService: LetsGOService, public navParams: NavParams) {
+  
+    this.friends = goService.leaderboardFriends().data.ranks;
+  
   }
 
   ionViewDidLoad() {
