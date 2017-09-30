@@ -25,4 +25,22 @@ export class LoginPage {
     console.log('login');
   }
 
+  signin(){
+    console.log('signin');
+  }
+
+  loginCard() {
+    this.loginVisible = !this.loginVisible;
+    if (this.loginVisible) {
+      this.signinVisible = false;
+    }
+  }
+
+  signinCard() {
+    this.signinVisible = !this.signinVisible;
+    if (this.signinVisible) {
+      this.loginVisible = false;
+    }
+  }
+
 }
