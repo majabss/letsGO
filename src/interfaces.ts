@@ -19,7 +19,8 @@ export interface LeaderboardEntry{
 export const enum PlayerTile {
     FREE = 0,
     BLACK = 1,
-    WHITE = 2
+    WHITE = 2,
+    GREEN = 3
 }
 
 export interface FieldResponse{
