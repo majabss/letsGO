@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
+<<<<<<< HEAD
   public player = 'Spieler 1';
   public scoreWeek = 500;
   public scoreAlltime = 1000;
@@ -16,5 +25,13 @@ export class HomePage {
   public gameStatus = 'blabla';
 
   constructor(public navCtrl: NavController) { }
+=======
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
+  }
+>>>>>>> d4abc2fe1db12ce3571bf0b4fb2f6377a4903d0d
 
 }

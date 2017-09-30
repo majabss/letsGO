@@ -1,0 +1,30 @@
+<ion-navbar *navbar>
+  <ion-title>Profile</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-segment>
+    <ion-segment-button value="login">
+      Log In
+    </ion-segment-button>
+    <ion-segment-button value="signup">
+      Sign Up
+    </ion-segment-button>
+  </ion-segment>
+
+  <form (ngSubmit)="login(signForm.value)">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" name="username" ngModel></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" name="password" ngModel></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button block type="submit">Log In</button>
+    </div>
+  </form>
+</ion-content>

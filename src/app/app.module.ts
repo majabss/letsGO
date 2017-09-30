@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 import { ComponentsModule } from './../components/components.module';
+=======
+import { LoginPageModule } from './../pages/login/login.module';
+import { GamePage } from './../pages/game/game';
+import { SettingsPage } from './../pages/settings/settings';
+import { LeaderboardPage } from './../pages/leaderboard/leaderboard';
+>>>>>>> d4abc2fe1db12ce3571bf0b4fb2f6377a4903d0d
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -18,12 +25,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LeaderboardPage,
+    SettingsPage,
+    GamePage
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     IonicModule.forRoot(MyApp),
     ComponentsModule
+=======
+    LoginPageModule,
+    IonicModule.forRoot(MyApp)
+>>>>>>> d4abc2fe1db12ce3571bf0b4fb2f6377a4903d0d
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,12 +46,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LeaderboardPage,
+    SettingsPage,
+    GamePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
+
 })
 export class AppModule {}
