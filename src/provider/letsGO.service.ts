@@ -102,4 +102,10 @@ export class LetsGOService {
     public signin(values: string[]) {
         return this.techService.getRequest('/account/login?' + values.join());
     }
+
+    public leaderboard(values: string[]) {
+        return this.techService.getRequest('/player/ranking?sessionkey=' +  + values);
+    }
+
+
 }

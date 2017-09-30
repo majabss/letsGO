@@ -23,20 +23,18 @@ export class LeaderboardPage {
   public leaderboardAlltime: LeaderboardResponse;
   public leaderboardType: string;
 
-  constructor(public navCtrl: NavController, private goService: LetsGOService, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private go: LetsGOService, public navParams: NavParams) {
 
     this.leaderboardType = 'Weekly';
 
-    this.leaderboardFriends = goService.leaderboardFriends();
-    this.leaderboardWeekly = goService.leaderboardWeekly();
-    this.leaderboardAlltime = goService.leaderboardAlltime();
+    this.leaderboardFriends = go.leaderboardFriends();
+    this.leaderboardWeekly = go.leaderboardWeekly();
+    this.leaderboardAlltime = go.leaderboardAlltime();
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LeaderboardPage');
-
-    
+    console.log('ionViewDidLoad LeaderboardPage');    
   }
 
   addFriend(id: string){
