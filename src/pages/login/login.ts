@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -21,22 +22,23 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  login() {
-    console.log('login');
+  public login() {
+    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.push(HomePage);
   }
 
-  signin(){
-    console.log('signin');
+  public signin(){
+    this.clickLoginCard();
   }
 
-  loginCard() {
+  public clickLoginCard() {
     this.loginVisible = !this.loginVisible;
     if (this.loginVisible) {
       this.signinVisible = false;
     }
   }
 
-  signinCard() {
+  public clickSigninCard() {
     this.signinVisible = !this.signinVisible;
     if (this.signinVisible) {
       this.loginVisible = false;

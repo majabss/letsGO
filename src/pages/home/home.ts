@@ -1,3 +1,4 @@
+import { NewGamePage } from './../new-game/new-game';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -32,6 +33,14 @@ export class HomePage {
 
   public loadHomeScreen() {
 
+  }
+
+  public newGame() {
+    this.navCtrl.push(NewGamePage);
+  }
+
+  public newFriend() {
+    // this.navCtrl.push(NewFriendPage);
   }
 
 }
