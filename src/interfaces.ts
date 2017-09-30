@@ -20,3 +20,19 @@ export const enum PlayerTile {
     BLACK = 1,
     WHITE = 2
 }
+
+export interface FieldResponse{
+    success: boolean,
+    message: string,
+    data: FieldData
+}
+
+export interface FieldData{
+    gamefield: FieldEntry[]
+} 
+
+export interface FieldEntry{
+    koordX: number,
+    koordY: number,
+    status: number
+}

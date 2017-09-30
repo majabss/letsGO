@@ -15,16 +15,22 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      <h2><b>Hallo</b></h2>
+        <h2><b>Gegner:&nbsp;</b>{{gegner}}</h2>
+        <h2><b>Am Zug:&nbsp;</b>{{amzug}}</h2>
+        <h2><b>Zeit:&nbsp;</b>{{zeit}}</h2>
     </ion-card-header>
     <ion-card-content>
       <div class="flex-container" *ngFor="let row of board, let i = index">
-        <div class="flex-item" *ngFor="let entry of row, let j = index"  (click)="setzen(i, j)">
-          <div *ngIf="entry == 0" class="ellNone"></div>
+        <div class="flex-item" *ngFor="let entry of row, let j = index">
+          <div (click)="setzen(i, j)">
+              <div *ngIf="entry == 0" class="ellNone"></div>
+          </div>
           <div *ngIf="entry == 1" class="ellWhite"></div>
           <div *ngIf="entry == 2" class="ellBlack"></div>
         </div>
       </div>
+      <button ion-button outline (click)="cancel()" color="danger" >Cancel</button>
+      <button ion-button outline (click)="send()" color="secondary" >Send</button>
     </ion-card-content>
   </ion-card>
 </ion-content>

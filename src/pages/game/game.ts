@@ -21,11 +21,18 @@ export class GamePage {
   public wert: boolean;
   public boardSize: number;
   public tileWidthHeight: number;
+  public gegner: string;
+  public amzug: string;
+  public zeit: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.boardSize = 9;
     this.tileWidthHeight = 255/this.boardSize;
     this.initBoard(this.boardSize);
+
+    this.gegner = "Test";
+    this.amzug = "Du";
+    this.zeit = "10h";
   }
 
   ionViewDidLoad() {
@@ -50,6 +57,14 @@ export class GamePage {
       this.board[i][j] = PlayerTile.WHITE;
     }
     this.wert = !this.wert;
+  }
+
+  public cancel(){
+    
+  }
+
+  public send(){
+    
   }
 
 }
