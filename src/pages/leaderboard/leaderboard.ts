@@ -39,4 +39,8 @@ export class LeaderboardPage {
     
   }
 
+  addFriend(id: string){
+    console.log(id);
+  }
+
 }

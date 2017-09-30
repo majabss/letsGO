@@ -1,6 +1,6 @@
 <div>
   <ion-card>
-    <ion-card-header (click)="loginCard()">
+    <ion-card-header (click)="clickLoginCard()">
       Log in
     </ion-card-header>
     <ion-card-content *ngIf="loginVisible">
@@ -17,14 +17,14 @@
       </ion-list>
 
       <div padding>
-        <button ion-button (click)="login()" outline>Log In</button>
+        <button ion-button outline (click)="login()" outline>Log In</button>
       </div>
 
     </ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-card-header (click)="signinCard()">
+    <ion-card-header (click)="clickSigninCard()">
       Sign in
     </ion-card-header>
     <ion-card-content *ngIf="signinVisible">
@@ -51,7 +51,7 @@
       </ion-list>
 
       <div padding>
-        <button ion-button (click)="signin()" outline>Sign In</button>
+        <button ion-button outline (click)="signin()" outline>Sign In</button>
       </div>
 
     </ion-card-content>
