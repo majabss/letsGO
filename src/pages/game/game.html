@@ -21,12 +21,11 @@
     </ion-card-header>
     <ion-card-content>
       <div class="flex-container" *ngFor="let row of board, let i = index">
-        <div class="flex-item" *ngFor="let entry of row, let j = index">
-          <div (click)="setzen(i, j)">
-              <div *ngIf="entry == 0" class="ellNone"></div>
-          </div>
+        <div class="flex-item" *ngFor="let entry of row, let j = index" (click)="setzen(i, j)">
+          <div *ngIf="entry == 0" class="ellNone"></div>
           <div *ngIf="entry == 1" class="ellWhite"></div>
           <div *ngIf="entry == 2" class="ellBlack"></div>
+          <div *ngIf="entry == 3" class="ellGreen"></div>
         </div>
       </div>
       <button ion-button outline (click)="cancel()" color="danger" >Cancel</button>

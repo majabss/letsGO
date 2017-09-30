@@ -24,6 +24,8 @@ export class GamePage {
   public gegner: string;
   public amzug: string;
   public zeit: string;
+  public posX: number = -1;
+  public posY: number = -1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.boardSize = 9;
@@ -45,16 +47,28 @@ export class GamePage {
     for(var i: number = 0; i < boardSize; i++) {
       this.board[i] = [];
       for(var j: number = 0; j< boardSize; j++) {
-        this.board[i].push(PlayerTile.FREE);
+        //this.board[i].push(PlayerTile.FREE);
+        if(Math.random() < 0.5){
+          this.board[i].push(PlayerTile.FREE);
+        }else{
+          if(Math.random() < 0.5){
+            this.board[i].push(PlayerTile.BLACK);
+          }else{
+            this.board[i].push(PlayerTile.WHITE);
+          }
+        }
       }
     }
   }
 
   public setzen(i: number, j: number){
-    if(this.wert){
-      this.board[i][j] = PlayerTile.BLACK;
-    }else{
-      this.board[i][j] = PlayerTile.WHITE;
+    if(this.board[i][j] == 0){
+      if(this.posX != -1 && this.posY != -1){
+        this.board[this.posX][this.posY] = PlayerTile.FREE;
+      }
+      this.posX = i;
+      this.posY = j;
+      this.board[this.posX][this.posY] = PlayerTile.GREEN;
     }
     this.wert = !this.wert;
   }
