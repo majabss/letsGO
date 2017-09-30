@@ -15,7 +15,11 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label>Decline invitations from all except your friends</ion-label>
+    <ion-label>
+      Decline invitations from all
+      <br>
+      except your friends
+    </ion-label>
     <ion-toggle [checked]="declineInvitationsFromNotFriends"></ion-toggle>
   </ion-item>
   <ion-item>
@@ -23,6 +27,6 @@
     <ion-toggle disabled [checked]="pushNotifications"></ion-toggle>
   </ion-item>
 
-  <button id="save" ion-button color="secondary" outline>Sign out</button>
+  <button id="save" ion-button color="secondary" outline>Save</button>
   <button id="signout" ion-button color="danger" outline (click)="signout()" >Sign out</button>
 </ion-content>
