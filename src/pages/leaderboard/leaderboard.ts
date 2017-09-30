@@ -45,7 +45,6 @@ export class LeaderboardPage {
           this.me = entry;
         }
       });
-      console.log('Weekly2', this.leaderboardWeekly);
     },
     (err) => {console.error(err);});
 
