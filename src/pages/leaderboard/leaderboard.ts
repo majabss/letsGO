@@ -21,7 +21,13 @@ export class LeaderboardPage {
   public leaderboardFriends: LeaderboardEntry[] = [];
   public leaderboardWeekly: LeaderboardEntry[] = [];
   public leaderboardAlltime: LeaderboardEntry[] = [];
-  public me: LeaderboardEntry;
+  public me: LeaderboardEntry = {
+    id: '',
+    name: '',
+    atp: '',
+    wp: '',
+    rank: ''
+  }
   public leaderboardType: string = 'Weekly';
 
   constructor(public navCtrl: NavController, private go: LetsGOService, public navParams: NavParams) {
@@ -31,25 +37,28 @@ export class LeaderboardPage {
 
     // Daten holen
     this.go.leaderboard('weekly').subscribe((answer) => {
-      this.leaderboardAlltime = answer.data.data;
+      console.log('Weekly', answer);
+      this.leaderboardWeekly = answer.data.data;
+      let entries: LeaderboardEntry[] = answer.data.data;
+      entries.forEach(entry => {
+        if (entry.name = go.user) {
+          this.me = entry;
+        }
+      });
     },
-    (err) => { 
-      console.error(err);
-    });
+    (err) => {console.error(err);});
 
     this.go.leaderboard('alltime').subscribe(answer => {
+      console.log('Alltime', answer);
       this.leaderboardAlltime = answer.data.data;
     },
-    (err) => { 
-      console.error(err);
-    });
+    (err) => {console.error(err);});
 
     this.go.leaderboard('friends').subscribe(answer => {
+      console.log('Friends', answer);
       this.leaderboardFriends = answer.data.data;
     },
-    (err) => { 
-      console.error(err);
-    });
+    (err) => {console.error(err);});
 
   }
 
