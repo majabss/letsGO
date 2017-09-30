@@ -1,4 +1,4 @@
-import { Answer } from './../../interfaces';
+import { Answer, HomeScreenData } from './../../interfaces';
 import { LetsGOService } from './../../provider/letsGO.service';
 import { NewFriendPage } from './../new-friend/new-friend';
 import { NewGamePage } from './../new-game/new-game';
@@ -19,25 +19,31 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 })
 export class HomePage {
 
-  public player = 'Spieler 1';
-  public scoreWeek = 500;
-  public scoreAlltime = 1000;
+  public player: string;
+  public scoreWeek: string;
+  public scoreAlltime: string;
 
   public opponentName = 'Lars';
   public opponentScore = 5000;
   public gameStatus = 'blabla';
 
-  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
-    this.loadHomeScreen();
-  }
+  public allData: HomeScreenData = {};
 
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
+  }
+  
   ionViewDidLoad() {
+    this.loadHomeScreen();
+    this.player = this.go.user;
   }
 
   public loadHomeScreen() {
     this.go.loadHomePageData().subscribe(
       (answer: Answer) => {
-        console.log(answer);
+        this.allData = answer.data;
+        this.scoreAlltime = this.allData.alltimepoints;
+        this.scoreWeek = this.allData.weeklypoints;
+        console.log('answer', this.allData);
       },
       (err) => {
         console.log(err);

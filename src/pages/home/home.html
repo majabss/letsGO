@@ -26,13 +26,24 @@
 
 <ion-content padding>
   <ion-list-header>My Turn</ion-list-header>
-  <app-list-item mainText="Maja" additionalText="bla" secondRowText="Running">
+  <app-list-item *ngFor="let myturn of allData.RunningYourTurn"
+    [mainText]="myturn.otherplayername"
+    [additionalText]="myturn.playtime"
+    [secondRowText]="myturn.zugcount">
   </app-list-item>
+
   <ion-list-header>Invitations</ion-list-header>
-  <app-list-item mainText="Jonas" additionalText="bla" secondRowText="Running">
+  <app-list-item *ngFor="let invitation of allData.GotInvited"
+    [mainText]="invitation.otherplayername"
+    [additionalText]="invitation.playtime"
+    [secondRowText]="invitation.fieldsize">
   </app-list-item>
+
   <ion-list-header>Opponent's Turn</ion-list-header>
-  <app-list-item mainText="Lars" additionalText="bla" secondRowText="Running">
+  <app-list-item *ngFor="let notmyturn of allData.RunningOtherPlayerTurn"
+    [mainText]="notmyturn.otherplayername" 
+    [additionalText]="notmyturn.playtime" 
+    [secondRowText]="notmyturn.zugcount">
   </app-list-item>
   <ion-list-header>Closed Games</ion-list-header>
   <app-list-item mainText="Jonas" additionalText="bla" secondRowText="Running">
