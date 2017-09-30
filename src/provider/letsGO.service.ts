@@ -7,6 +7,12 @@ import { TechnischerService } from './technischer.service';
 @Injectable()
 export class LetsGOService {
 
+    public user: string;
+    public password: string;
+    public sessionKey: string;
+    public mail: string;
+    public phone: string = '1234';
+
     constructor(private techService: TechnischerService) { }
 
     public leaderboardFriends(): LeaderboardResponse {
@@ -99,7 +105,12 @@ export class LetsGOService {
         return this.techService.getRequest('/account/reg?' + values);
     }
 
-    public signin(values: string[]) {
-        return this.techService.getRequest('/account/login?' + values.join());
+    public signin(values: string) {
+        return this.techService.getRequest('/account/login?' + values);
     }
+
+    public loadHomePageData() {
+        return this.techService.getRequest('/player/homescreen?sessionkey=' + this.sessionKey);
+    }
+
 }
