@@ -60,7 +60,7 @@ export class LoginPage {
         }
       );      
     }
-    this.navCtrl.setRoot(TabsPage);
+    // this.navCtrl.setRoot(TabsPage);
   }
 
   public signin(){

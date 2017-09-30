@@ -32,6 +32,7 @@ export interface HomeScreenData{
     History?: History[],
     Requested?: Requested[],
     RunningOtherPlayerTurn?: RunningOtherPlayerTurn[],
+    RunningYourTurn?: RunningYourTurn[],
     alltimepoints?: string,
     weeklypoints?: string
 }
@@ -53,10 +54,28 @@ export interface History{
     zugcount?: string
 }
 export interface Requested{
-    // fieldsize
-    // id
-    // lastturn
-    // otherplayername
-    // playtime
+    fieldsize?: string,
+    id?: string,
+    lastturn?: string,
+    otherplayername?: string,
+    playtime?: string
 }
-export interface RunningOtherPlayerTurn{}
+export interface RunningOtherPlayerTurn{
+    fieldsize?: string,
+    id?: string,
+    newmsg?: string,
+    lastturn?: string,
+    otherplayername?: string,
+    playtime?: string,
+    zugcount?: string
+}
+
+export interface RunningYourTurn {
+    fieldsize?: string,
+    id?: string,
+    newmsg?: string,
+    lastturn?: string,
+    otherplayername?: string,
+    playtime?: string,
+    zugcount?: string
+}
