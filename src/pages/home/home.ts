@@ -1,9 +1,10 @@
+import { GamePage } from './../game/game';
 import { Answer, HomeScreenData } from './../../interfaces';
 import { LetsGOService } from './../../provider/letsGO.service';
 import { NewFriendPage } from './../new-friend/new-friend';
 import { NewGamePage } from './../new-game/new-game';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the HomePage page.
@@ -29,7 +30,7 @@ export class HomePage {
 
   public allData: HomeScreenData = {};
 
-  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService, public alertCtrl: AlertController) {
   }
   
   ionViewDidLoad() {
@@ -49,6 +50,48 @@ export class HomePage {
         console.log(err);
       }
     );
+  }
+
+  public playGame(id: string){
+    this.navCtrl.push(GamePage, id);
+  }
+
+  public invitation(id: string){
+    let confirm = this.alertCtrl.create({
+      title: 'Invitation',
+      message: 'Do you want to accept the invitation?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree ' + id);
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            console.log('Agree '  + id);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  } 
+
+  public accept(id: string){
+    this.go.accept(id).subscribe(
+      (answer: Answer) => {
+        if(answer.success == false){
+          console.log(answer);
+        }
+      },
+      (err) => {
+        console.log(err);
+      });
+  }
+
+  public decline(id: string){
+
   }
 
   public newGame() {

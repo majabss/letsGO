@@ -1,4 +1,4 @@
-import { LeaderboardResponse, LeaderboardEntry, LeaderboardData } from './../interfaces';
+import { LeaderboardResponse, LeaderboardEntry, LeaderboardData, FieldResponse } from './../interfaces';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -116,6 +116,20 @@ export class LetsGOService {
     public leaderboard(type: string): Observable<LeaderboardResponse> {
         return this.techService.getRequest('/player/ranking?sessionkey=' + this.sessionKey + "&type=" + type);
     }
+    
+    public field(id: string): Observable<FieldResponse> {
+        return this.techService.getRequest('/game/field?sessionkey=' + this.sessionKey + "&id=" + id);
+    }
+    
+    public turn(id: string, x: number, y: number): Observable<Response> {
+        return this.techService.getRequest('/game/turn?sessionkey=' + this.sessionKey + "&id=" + id + "&x=" + x + "&y=" + y);
+    }
 
+    public accept(id: string){
+        return this.techService.getRequest('/game/accept?sessionkey=' + this.sessionKey + "&id=" + id);
+    }
 
+    public decline(id: string){
+        return this.techService.getRequest('/game/decline?sessionkey=' + this.sessionKey + "&id=" + id);
+    }
 }

@@ -1,3 +1,5 @@
+import { FieldResponse, FieldEntry } from './../../interfaces';
+import { LetsGOService } from './../../provider/letsGO.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PlayerTile } from '../../interfaces';
@@ -27,14 +29,33 @@ export class GamePage {
   public posX: number = -1;
   public posY: number = -1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
     this.boardSize = 9;
     this.tileWidthHeight = 255/this.boardSize;
     this.initBoard(this.boardSize);
 
-    this.gegner = "Test";
+    this.gegner = "lars";
     this.amzug = "Du";
-    this.zeit = "10h";
+    this.zeit = "24";
+
+    console.log(navParams);
+    
+    let gameid: string = navParams.get('id');
+    // this.gegner = navParams.get('name');
+    //let amZug: string = navParams.get('amZug');
+    // this.zeit = navParams.get('zeit');
+
+    this.go.field(gameid).subscribe(
+      (response: FieldResponse) => {
+        console.log(response);
+        // response.data.gamefield.forEach((entry: FieldEntry) => {
+        //   this.board[entry.koordX][entry.koordY] = entry.status;
+        // });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   ionViewDidLoad() {
@@ -47,16 +68,7 @@ export class GamePage {
     for(var i: number = 0; i < boardSize; i++) {
       this.board[i] = [];
       for(var j: number = 0; j< boardSize; j++) {
-        //this.board[i].push(PlayerTile.FREE);
-        if(Math.random() < 0.5){
-          this.board[i].push(PlayerTile.FREE);
-        }else{
-          if(Math.random() < 0.5){
-            this.board[i].push(PlayerTile.BLACK);
-          }else{
-            this.board[i].push(PlayerTile.WHITE);
-          }
-        }
+        this.board[i].push(PlayerTile.FREE);
       }
     }
   }

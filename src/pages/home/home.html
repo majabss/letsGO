@@ -29,14 +29,16 @@
   <app-list-item *ngFor="let myturn of allData.RunningYourTurn"
     [mainText]="myturn.otherplayername"
     [additionalText]="myturn.playtime"
-    [secondRowText]="myturn.zugcount">
+    [secondRowText]="myturn.zugcount"
+    (click)="playGame(myturn.id)">
   </app-list-item>
 
   <ion-list-header>Invitations</ion-list-header>
   <app-list-item *ngFor="let invitation of allData.GotInvited"
     [mainText]="invitation.otherplayername"
     [additionalText]="invitation.playtime"
-    [secondRowText]="invitation.fieldsize">
+    [secondRowText]="invitation.fieldsize"
+    (click)="accept(invitation.id)">
   </app-list-item>
 
   <ion-list-header>Opponent's Turn</ion-list-header>

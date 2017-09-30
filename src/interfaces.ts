@@ -94,5 +94,6 @@ export interface RunningYourTurn {
     lastturn?: string,
     otherplayername?: string,
     playtime?: string,
-    zugcount?: string
+    zugcount?: string,
+    IchBin?: string
 }
