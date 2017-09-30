@@ -23,6 +23,6 @@ export class HomePage {
   public opponentScore = 5000;
   public gameStatus = 'blabla';
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
 }
