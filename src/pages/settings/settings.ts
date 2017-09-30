@@ -35,7 +35,7 @@ export class SettingsPage {
   }
 
   /**
-   * Calls Sign out 
+   * Calls Log out 
    */
   public signout() {
     this.navCtrl.setRoot(LoginPage);
