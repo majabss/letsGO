@@ -14,9 +14,15 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Friend</ion-label>
+      <ion-select [(ngModel)]="friend" >
+          <ion-option *ngFor="let entry of friends" [value]="entry.id">{{entry.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-    <ion-select [(ngModel)]="friend">
-        <ion-option *ngFor="let entry of friends" value="entry.id">{{entry.name}}</ion-option>
-    </ion-select>
+  <button ion-button (click)="start()" outline>Start</button>
 
 </ion-content>
