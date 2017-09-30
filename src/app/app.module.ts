@@ -1,3 +1,6 @@
+import { Http, HttpModule } from '@angular/http';
+import { TechnischerService } from './../provider/technischer.service';
+import { LetsGOService } from './../provider/letsGO.service';
 import { GamePage } from './../pages/game/game';
 import { SettingsPage } from './../pages/settings/settings';
 import { LoginPage } from './../pages/login/login';
@@ -15,6 +18,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+export const BASEPATH = "h2726662.stratoserver.net";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -29,6 +34,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -46,6 +52,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    TechnischerService,
+    LetsGOService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 

@@ -15,4 +15,41 @@
 
 <ion-content padding>
 
+  <ion-card>
+    <ion-card-header>
+      <table width="100%">
+        <tr>
+          <td width="30%">
+            40001
+          </td>
+          <td width="40%">
+            You
+          </td>
+          <td width="30%" align="right">
+            12432
+          </td>
+        </tr>
+      </table>
+    </ion-card-header>
+  
+    <ion-list>
+      <button ion-item *ngFor="let entry of leaderboardWeekly.data.ranks">
+        <table width="100%">
+          <tr>
+            <td width="30%">
+              {{entry.id}}
+            </td>
+            <td width="40%">
+              {{entry.name}}
+            </td>
+            <td width="30%" align="right">
+              {{entry.weeklypoints}}
+            </td>
+          </tr>
+        </table>
+      </button>
+  
+    </ion-list>
+  </ion-card>
+
 </ion-content>
