@@ -117,5 +117,15 @@ export class LetsGOService {
         return this.techService.getRequest('/player/ranking?sessionkey=' + this.sessionKey + "&type=" + type);
     }
 
+    public getFriends() {
+        return this.techService.getRequest('/player/friends?sessionkey=' + this.sessionKey);
+    }
 
+    // public searchFriends() {
+    //     return this.
+    // }
+
+    public addFriend(userid: string) {
+        return this.techService.getRequest('/player/addfriend?sessionkey=' + this.sessionKey + '&userid=' + userid);
+    }
 }
