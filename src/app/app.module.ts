@@ -1,9 +1,10 @@
 import { Http, HttpModule } from '@angular/http';
 import { TechnischerService } from './../provider/technischer.service';
 import { LetsGOService } from './../provider/letsGO.service';
+import { ComponentsModule } from './../components/components.module';
+import { LoginPageModule } from './../pages/login/login.module';
 import { GamePage } from './../pages/game/game';
 import { SettingsPage } from './../pages/settings/settings';
-import { LoginPage } from './../pages/login/login';
 import { LeaderboardPage } from './../pages/leaderboard/leaderboard';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,13 +29,14 @@ export const BASEPATH = "h2726662.stratoserver.net";
     HomePage,
     TabsPage,
     LeaderboardPage,
-    LoginPage,
     SettingsPage,
     GamePage
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    ComponentsModule,
+    LoginPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -45,7 +47,6 @@ export const BASEPATH = "h2726662.stratoserver.net";
     HomePage,
     TabsPage,
     LeaderboardPage,
-    LoginPage,
     SettingsPage,
     GamePage
   ],
