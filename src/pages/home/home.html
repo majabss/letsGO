@@ -7,14 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Home</ion-title>
-    <br>
-    <table>
-      <tr>
-        <td>{{ player }}</td>
-        <td>{{ scoreWeek }} ({{ scoreAlltime }})</td>
-      </tr>
-    </table>
+    <ion-title>
+      <table style="width:100%">
+        <tr style="width:100%">
+          <td>
+            Home&nbsp;
+          </td>
+          <td class="player">
+              {{ player }} - {{ scoreWeek }} ({{ scoreAlltime }})
+          </td>
+        </tr>
+      </table>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>

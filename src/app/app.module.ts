@@ -1,3 +1,4 @@
+import { NewFriendPage } from './../pages/new-friend/new-friend';
 import { NewGamePage } from './../pages/new-game/new-game';
 import { Http, HttpModule } from '@angular/http';
 import { TechnischerService } from './../provider/technischer.service';
@@ -32,7 +33,8 @@ export const BASEPATH = "h2726662.stratoserver.net";
     LeaderboardPage,
     SettingsPage,
     GamePage,
-    NewGamePage
+    NewGamePage,
+    NewFriendPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ export const BASEPATH = "h2726662.stratoserver.net";
     LeaderboardPage,
     SettingsPage,
     GamePage,
-    NewGamePage
+    NewGamePage,
+    NewFriendPage
   ],
   providers: [
     StatusBar,
