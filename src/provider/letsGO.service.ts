@@ -1,4 +1,4 @@
-import { LeaderboardResponse, LeaderboardEntry, LeaderboardData, FieldResponse, Answer } from './../interfaces';
+import { LeaderboardEntry, LeaderboardData, FieldResponse, Answer } from './../interfaces';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
