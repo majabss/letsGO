@@ -51,9 +51,11 @@ export class HomePage {
         console.log(err);
       }
     );
+    console.log('refresher', refresher);
     if (refresher) {
       setTimeout(() => {
         console.log('Async operation has ended');
+        console.log('refresher', refresher);
         refresher.complete();
       }, 2000);
     }
