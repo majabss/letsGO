@@ -1,5 +1,8 @@
+import { TechnischerService } from './../../provider/technischer.service';
+import { LeaderboardResponse } from './../../interfaces';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {LetsGOService} from './../../provider/letsGO.service';
 
 /**
  * Generated class for the LeaderboardPage page.
@@ -15,11 +18,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LeaderboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public leaderboardWeekly: LeaderboardResponse;
+  
+  constructor(public navCtrl: NavController, private goService: LetsGOService, public navParams: NavParams) {
+
+    this.leaderboardWeekly = goService.leaderboardWeekly();
+
+    
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LeaderboardPage');
+
+    
   }
 
 }
