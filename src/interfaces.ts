@@ -20,3 +20,9 @@ export const enum PlayerTile {
     BLACK = 1,
     WHITE = 2
 }
+
+export interface Answer {
+    success: boolean,
+    message: string,
+    data: any;
+}

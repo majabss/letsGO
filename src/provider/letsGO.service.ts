@@ -94,4 +94,12 @@ export class LetsGOService {
         }
         return response;
     }  
+
+    public reg(values: string) {
+        return this.techService.getRequest('/account/reg?' + values);
+    }
+
+    public signin(values: string[]) {
+        return this.techService.getRequest('/account/login?' + values.join());
+    }
 }
