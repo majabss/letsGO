@@ -1,6 +1,6 @@
 import { NewGamePage } from './../new-game/new-game';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 
 /**
  * Generated class for the HomePage page.
@@ -24,7 +24,7 @@ export class HomePage {
   public opponentScore = 5000;
   public gameStatus = 'blabla';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -36,7 +36,8 @@ export class HomePage {
   }
 
   public newGame() {
-    this.navCtrl.push(NewGamePage);
+    this.app.getRootNav().push(NewGamePage);
+    // this.navCtrl.push(NewGamePage);
   }
 
   public newFriend() {
