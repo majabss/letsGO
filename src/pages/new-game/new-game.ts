@@ -35,4 +35,8 @@ export class NewGamePage {
     this.navCtrl.push(GamePage);
   }
 
+  public cancel() {
+    this.navCtrl.pop();
+  }
+
 }
