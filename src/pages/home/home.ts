@@ -1,3 +1,5 @@
+import { Answer } from './../../interfaces';
+import { LetsGOService } from './../../provider/letsGO.service';
 import { NewFriendPage } from './../new-friend/new-friend';
 import { NewGamePage } from './../new-game/new-game';
 import { Component } from '@angular/core';
@@ -25,15 +27,22 @@ export class HomePage {
   public opponentScore = 5000;
   public gameStatus = 'blabla';
 
-  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
+    this.loadHomeScreen();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
   }
 
   public loadHomeScreen() {
-
+    this.go.loadHomePageData().subscribe(
+      (answer: Answer) => {
+        console.log(answer);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   public newGame() {

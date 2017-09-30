@@ -40,11 +40,14 @@ export class LoginPage {
 
   public login() {
     if (this.username && this.username != '' && this.password && this.password != '') {
-      let params = ['user=' + this.username, '&password=' + this.password];
+      let params = 'user=' + this.username + '&password=' + this.password;
       this.go.signin(params).subscribe(
         (data: Answer) => {
           console.log(data)
           if (data.success) {
+            this.go.user = this.username;
+            this.go.password = this.password;
+            this.go.sessionKey = data.data.SessionKey;
             this.navCtrl.setRoot(TabsPage);
           } else if (!data.success) {
             this.showAlert('Fehler', data.message);
