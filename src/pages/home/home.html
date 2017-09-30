@@ -14,7 +14,7 @@
             Home&nbsp;
           </td>
           <td class="player">
-              {{ player }} - {{ scoreWeek }} ({{ scoreAlltime }})
+            {{ player }} - {{ scoreWeek }} ({{ scoreAlltime }})
           </td>
         </tr>
       </table>
@@ -25,26 +25,22 @@
 
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="loadHomeScreen($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list-header>My Turn</ion-list-header>
-  <app-list-item *ngFor="let myturn of allData.RunningYourTurn"
-    [mainText]="myturn.otherplayername"
-    [additionalText]="myturn.playtime"
-    [secondRowText]="myturn.zugcount"
-    (click)="playGame(myturn.id)">
+  <app-list-item *ngFor="let myturn of allData.RunningYourTurn" [mainText]="myturn.otherplayername" [additionalText]="myturn.playtime"
+    [secondRowText]="myturn.zugcount" (click)="playGame(myturn.id)">
   </app-list-item>
 
   <ion-list-header>Invitations</ion-list-header>
-  <app-list-item *ngFor="let invitation of allData.GotInvited"
-    [mainText]="invitation.otherplayername"
-    [additionalText]="invitation.playtime"
-    [secondRowText]="invitation.fieldsize"
-    (click)="accept(invitation.id)">
+  <app-list-item *ngFor="let invitation of allData.GotInvited" [mainText]="invitation.otherplayername" [additionalText]="invitation.playtime"
+    [secondRowText]="invitation.fieldsize" (click)="accept(invitation.id)">
   </app-list-item>
 
   <ion-list-header>Opponent's Turn</ion-list-header>
-  <app-list-item *ngFor="let notmyturn of allData.RunningOtherPlayerTurn"
-    [mainText]="notmyturn.otherplayername" 
-    [additionalText]="notmyturn.playtime" 
+  <app-list-item *ngFor="let notmyturn of allData.RunningOtherPlayerTurn" [mainText]="notmyturn.otherplayername" [additionalText]="notmyturn.playtime"
     [secondRowText]="notmyturn.zugcount">
   </app-list-item>
   <ion-list-header>Closed Games</ion-list-header>
@@ -55,7 +51,9 @@
     <button ion-fab color="blue"><ion-icon name="add"></ion-icon></button>
     <ion-fab-list side="top">
       <button ion-fab (click)="newGame()"><ion-icon name="game-controller-b"></ion-icon></button>
-      <button ion-fab (click)="newFriend()" ><ion-icon name="person-add"></ion-icon></button>
+      <button ion-fab (click)="newFriend()"><ion-icon name="person-add"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
+
+
 </ion-content>

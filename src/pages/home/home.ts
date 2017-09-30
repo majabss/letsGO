@@ -31,6 +31,7 @@ export class HomePage {
   public allData: HomeScreenData = {};
 
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService, public alertCtrl: AlertController) {
+    
   }
   
   ionViewDidLoad() {
@@ -38,7 +39,7 @@ export class HomePage {
     this.player = this.go.user;
   }
 
-  public loadHomeScreen() {
+  public loadHomeScreen(refresher?: any) {
     this.go.loadHomePageData().subscribe(
       (answer: Answer) => {
         this.allData = answer.data;
@@ -50,6 +51,12 @@ export class HomePage {
         console.log(err);
       }
     );
+    if (refresher) {
+      setTimeout(() => {
+        console.log('Async operation has ended');
+        refresher.complete();
+      }, 2000);
+    }
   }
 
   public playGame(id: string){
@@ -79,6 +86,7 @@ export class HomePage {
   } 
 
   public accept(id: string){
+    this.invitation(id);
     this.go.accept(id).subscribe(
       (answer: Answer) => {
         if(answer.success == false){
@@ -102,4 +110,5 @@ export class HomePage {
     this.app.getRootNav().push(NewFriendPage);
   }
 
+  
 }
