@@ -21,40 +21,41 @@ export class LeaderboardPage {
   public leaderboardFriends: LeaderboardEntry[] = [];
   public leaderboardWeekly: LeaderboardEntry[] = [];
   public leaderboardAlltime: LeaderboardEntry[] = [];
-  public leaderboardType: string;
+  public leaderboardType: string = 'Weekly';
 
   constructor(public navCtrl: NavController, private go: LetsGOService, public navParams: NavParams) {
-    // Initialisierung
-    this.leaderboardType = 'Weekly';
-
     // this.leaderboardFriends = go.leaderboardFriends();
     // this.leaderboardWeekly = go.leaderboardWeekly();
     // this.leaderboardAlltime = go.leaderboardAlltime();
 
     // Daten holen
     this.go.leaderboard('weekly').subscribe(data => {
-      this.leaderboardWeekly = data.data.ranks;
-      console.log(data);
+      console.log(data.data.ranks);
+      // data.data.ranks.forEach(eintray => {
+      //   this.leaderboardWeekly.push(eintray);
+      // })
+      // this.leaderboardWeekly = data.data.ranks;
+      console.log(this.leaderboardWeekly);
     },
     (err) => { 
       console.error(err);
     });
 
-    this.go.leaderboard('alltime').subscribe(data => {
-      this.leaderboardAlltime = data.data.ranks;
-      console.log(data);
-    },
-    (err) => { 
-      console.error(err);
-    });
+    // this.go.leaderboard('alltime').subscribe(data => {
+    //   this.leaderboardAlltime = data.data.ranks;
+    //   console.log(data);
+    // },
+    // (err) => { 
+    //   console.error(err);
+    // });
 
-    this.go.leaderboard('friends').subscribe(data => {
-      this.leaderboardFriends = data.data.ranks;
-      console.log(data);
-    },
-    (err) => { 
-      console.error(err);
-    });
+    // this.go.leaderboard('friends').subscribe(data => {
+    //   this.leaderboardFriends = data.data.ranks;
+    //   console.log(data);
+    // },
+    // (err) => { 
+    //   console.error(err);
+    // });
 
   }
 
