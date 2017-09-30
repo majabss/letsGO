@@ -1,3 +1,4 @@
+import { TabsPage } from './../tabs/tabs';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -23,8 +24,8 @@ export class LoginPage {
   }
 
   public login() {
-    this.navCtrl.setRoot(HomePage);
-    this.navCtrl.push(HomePage);
+    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.push(TabsPage);
   }
 
   public signin(){
