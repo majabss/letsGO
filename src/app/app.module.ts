@@ -1,3 +1,7 @@
+import { GamePage } from './../pages/game/game';
+import { SettingsPage } from './../pages/settings/settings';
+import { LoginPage } from './../pages/login/login';
+import { LeaderboardPage } from './../pages/leaderboard/leaderboard';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -17,7 +21,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LeaderboardPage,
+    LoginPage,
+    SettingsPage,
+    GamePage
   ],
   imports: [
     BrowserModule,
@@ -29,12 +37,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LeaderboardPage,
+    LoginPage,
+    SettingsPage,
+    GamePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
+
 })
 export class AppModule {}
