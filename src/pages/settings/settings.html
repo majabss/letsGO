@@ -23,6 +23,6 @@
     <ion-toggle disabled [checked]="pushNotifications"></ion-toggle>
   </ion-item>
 
-
-  <button id="signout" ion-button color="danger" outline>Sign out</button>
+  <button id="save" ion-button color="secondary" outline>Sign out</button>
+  <button id="signout" ion-button color="danger" outline (click)="signout()" >Sign out</button>
 </ion-content>

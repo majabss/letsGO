@@ -15,7 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
+  /**
+   * Defines whether the user wants to decline all invitations except from friends
+   */
   public declineInvitationsFromNotFriends: boolean;
+  /**
+   * Defines whether Push Notifications are enabled
+   */
   public pushNotifications: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -27,4 +33,17 @@ export class SettingsPage {
     console.log('ionViewDidLoad SettingsPage');
   }
 
+  /**
+   * Calls Sign out 
+   */
+  public signout() {
+    console.log('Sign out');
+  }
+
+  /**
+   * Calls Save
+   */
+  public save() {
+    console.log('save');
+  }
 }
