@@ -121,9 +121,9 @@ export class LetsGOService {
         return this.techService.getRequest('/player/friends?sessionkey=' + this.sessionKey);
     }
 
-    // public searchFriends() {
-    //     return this.
-    // }
+    public searchFriends(search: string) {
+        return this.techService.getRequest('/player/search?sessionkey=' + this.sessionKey + '&name=' + search)
+    }
 
     public addFriend(userid: string) {
         return this.techService.getRequest('/player/addfriend?sessionkey=' + this.sessionKey + '&userid=' + userid);

@@ -19,11 +19,11 @@
       <ion-list>
         <ion-item>
           <ion-label floating>Username</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]="search" ></ion-input>
         </ion-item>
       </ion-list>
       <div padding>
-        <button ion-button outline (click)="search()" outline>Search</button>
+        <button ion-button outline (click)="searchFriends()" outline>Search</button>
       </div>
 
     </ion-card-content>

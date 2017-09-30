@@ -16,27 +16,36 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'new-friend.html',
 })
 export class NewFriendPage {
-  public friends: LeaderboardEntry[] = [];
-  public aktFriend: LeaderboardEntry = null;
+  public friends: any[] = [];
+  public aktFriend: any = null;
+  public search: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private goService: LetsGOService, public alertCtrl: AlertController) {
-    this.addFriend('2');
-    this.addFriend('3');
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private goService: LetsGOService, public alertCtrl: AlertController) { }
 
   ionViewDidLoad() {
   }
 
-  public search() {
-    
+  public searchFriends() {
+    if (this.search && this.search != '') {
+      this.goService.searchFriends(this.search).subscribe(
+        (answer: Answer) => {
+          if (answer.success) {
+            this.friends = answer.data.data;
+            console.log(this.friends);
+          } else if (!answer.success) {
+            this.showAlert('Fehler', answer.message);
+          }
+        }
+      );
+    }
   }
 
-  public addFriend(userid: string) {
-    this.goService.addFriend(userid).subscribe(
+  public addFriend() {
+    this.goService.addFriend(this.aktFriend.id).subscribe(
       (data: Answer) => {
         console.log(data);
         if (data.success) {
-          this.getFriends()
+          console.log(data);
         } else if (!data.success) {
           this.showAlert('Fehler', data.message);
         }
@@ -44,21 +53,7 @@ export class NewFriendPage {
     );
   }
 
-  public getFriends() {
-    this.goService.getFriends().subscribe(
-      (data: Answer) => {
-        console.log(data);
-        if (data.success) {
-          // this.friends = data.data.ranks.map((element) => { return element[  1]; });
-          console.log('friends', data.data.ranks);
-        } else if (!data.success) {
-          this.showAlert('Fehler', data.message);
-        }
-      }
-    );
-  }
-
-  public selectFriend(friend: LeaderboardEntry) {
+  public selectFriend(friend: any) {
     this.aktFriend = friend;
   }
 
