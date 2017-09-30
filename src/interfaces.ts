@@ -13,4 +13,10 @@ export interface LeaderboardEntry{
     name: string,
     alltimepoints: string,
     weeklypoints: string
-} 
+}
+
+export const enum PlayerTile {
+    FREE = 0,
+    BLACK = 1,
+    WHITE = 2
+}
