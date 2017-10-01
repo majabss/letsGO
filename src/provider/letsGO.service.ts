@@ -148,4 +148,8 @@ export class LetsGOService {
     public startGame(userid: string, time: string, size: string) {
         return this.techService.getRequest('/game/create?sessionkey=' + this.sessionKey + '&userid=' + userid + '&time=' + time + '&size=' + size);
     }
+
+    public keepAlive() {
+        return this.techService.getRequest('player/keepalive?sessionkey=' + this.sessionKey);
+    }
 }

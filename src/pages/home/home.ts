@@ -31,9 +31,9 @@ export class HomePage {
   public allData: HomeScreenData = {};
 
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService, public alertCtrl: AlertController) {
-    
+    setInterval(this.keepAliveThread, 120000);
   }
-  
+
   ionViewDidLoad() {
     this.loadHomeScreen();
     this.player = this.go.user;
@@ -51,7 +51,6 @@ export class HomePage {
         console.log(err);
       }
     );
-    console.log('refresher', refresher);
     if (refresher) {
       setTimeout(() => {
         console.log('Async operation has ended');
@@ -74,6 +73,7 @@ export class HomePage {
           text: 'Disagree',
           handler: () => {
             console.log('Disagree ' + id);
+            this.decline(id);
           }
         },
         {
@@ -86,12 +86,12 @@ export class HomePage {
       ]
     });
     confirm.present();
-  } 
+  }
 
   public accept(id: string){
     this.go.accept(id).subscribe(
       (answer: Answer) => {
-        if(answer.success == false){
+        if (answer.success == false) {
           console.log(answer);
         }
       },
@@ -120,5 +120,28 @@ export class HomePage {
     this.app.getRootNav().push(NewFriendPage);
   }
 
+  public keepAliveThread() {
+    if (this.go) {
+      this.go.keepAlive().subscribe(
+        (answer: Answer) => {
+          console.log('keep Alive', answer);
+          if (answer.success) {
   
+          } else if (!answer.success) {
+            this.showAlert('Error', answer.message);
+          }
+        }
+      );
+    }
+  }
+
+  public showAlert(title: string, subTitle: string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
 }

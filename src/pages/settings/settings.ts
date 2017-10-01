@@ -1,3 +1,4 @@
+import { LetsGOService } from './../../provider/letsGO.service';
 import { LoginPage } from './../login/login';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
@@ -25,7 +26,7 @@ export class SettingsPage {
    */
   public pushNotifications: boolean;
 
-  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
     this.declineInvitationsFromNotFriends = false;
     this.pushNotifications = false;
   }
