@@ -47,7 +47,7 @@
             </table>
           </button>
           <hr>
-          <button ion-item *ngFor="let entry of leaderboardFriends">
+          <button ion-item *ngFor="let entry of leaderboardFriends" (click)="removeFriendRequest(entry.id)">
             <table width="100%">
               <tr>
                 <td width="30%">

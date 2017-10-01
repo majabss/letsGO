@@ -157,4 +157,9 @@ export class LetsGOService {
         return this.techService.getRequest('/game/concede?sessionkey=' + this.sessionKey + "&id=" + id);
     }
 
+    public removeFriend(userid: string) {
+        return this.techService.getRequest('/player/removefriend?sessionkey=' + this.sessionKey + '&userid=' + userid);
+    }
+
+
 }

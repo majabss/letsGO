@@ -1,7 +1,7 @@
 import { TechnischerService } from './../../provider/technischer.service';
-import { LeaderboardEntry } from './../../interfaces';
+import { LeaderboardEntry, Answer } from './../../interfaces';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {LetsGOService} from './../../provider/letsGO.service';
 
 /**
@@ -44,7 +44,7 @@ export class LeaderboardPage {
   }
   public leaderboardType: string = 'Weekly';
 
-  constructor(public navCtrl: NavController, private go: LetsGOService, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private go: LetsGOService, public navParams: NavParams, public alertCtrl: AlertController) {
     // this.leaderboardFriends = go.leaderboardFriends();
     // this.leaderboardWeekly = go.leaderboardWeekly();
     // this.leaderboardAlltime = go.leaderboardAlltime();
@@ -96,4 +96,44 @@ export class LeaderboardPage {
     console.log(id);
   }
 
+  removeFriendRequest(id: string){
+    let confirm = this.alertCtrl.create({
+      title: 'Remove?',
+      message: 'Remove as friend?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Friend Remove No ' + id);
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            console.log('Friend Remove Yes ' + id);
+            this.go.removeFriend(id).subscribe(
+              (data: Answer) => {
+                console.log(data);
+                if (data.success) {
+                  this.showAlert('Successful!', data.message);
+                } else if (!data.success) {
+                  this.showAlert('Error', data.message);
+                }
+              }
+            );
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  public showAlert(title: string, subTitle: string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }
