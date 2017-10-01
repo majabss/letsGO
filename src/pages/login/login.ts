@@ -76,8 +76,9 @@ export class LoginPage {
           console.log(data);
           if (data.success) {
             this.clickLoginCard();
+            this.showAlert('Registration successful!', data.message);
           } else if (!data.success) {
-            this.showAlert('Fehler', data.message);
+            this.showAlert('Error', data.message);
             this.regusername = null;
             this.regemail = null;
             this.regpassword = null;

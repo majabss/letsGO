@@ -31,9 +31,8 @@ export class NewFriendPage {
         (answer: Answer) => {
           if (answer.success) {
             this.friends = answer.data.data;
-            console.log(this.friends);
           } else if (!answer.success) {
-            this.showAlert('Fehler', answer.message);
+            this.showAlert('Error', answer.message);
           }
         }
       );
@@ -45,12 +44,13 @@ export class NewFriendPage {
       (data: Answer) => {
         console.log(data);
         if (data.success) {
-          console.log(data);
+          this.showAlert('Friend added!', data.message);
         } else if (!data.success) {
-          this.showAlert('Fehler', data.message);
+          this.showAlert('Error', data.message);
         }
       }
     );
+    this.navCtrl.pop();
   }
 
   public selectFriend(friend: any) {
