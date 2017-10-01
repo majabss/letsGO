@@ -31,16 +31,20 @@ export class HomePage {
   public allData: HomeScreenData = {};
 
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService, public alertCtrl: AlertController) {
-    setInterval(this.keepAliveThread, 120000);
+    setInterval(() => this.loadHomeScreen(this.go), 5000);
   }
 
   ionViewDidLoad() {
-    this.loadHomeScreen();
+    this.loadHomeScreen(this.go);
     this.player = this.go.user;
   }
 
-  public loadHomeScreen(refresher?: any) {
-    this.go.loadHomePageData().subscribe(
+  ionViewWillEnter() {
+    this.loadHomeScreen(this.go);
+  }
+
+  public loadHomeScreen(goInstance: LetsGOService, refresher?: any) {
+    goInstance.loadHomePageData().subscribe(
       (answer: Answer) => {
         this.allData = answer.data;
         this.scoreAlltime = this.allData.alltimepoints;
@@ -53,8 +57,6 @@ export class HomePage {
     );
     if (refresher) {
       setTimeout(() => {
-        console.log('Async operation has ended');
-        console.log('refresher', refresher);
         refresher.complete();
       }, 2000);
     }
