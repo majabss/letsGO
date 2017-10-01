@@ -45,17 +45,17 @@ export class LeaderboardPage {
   public leaderboardType: string = 'Weekly';
 
   constructor(public navCtrl: NavController, private go: LetsGOService, public navParams: NavParams, public alertCtrl: AlertController) {
-    // this.leaderboardFriends = go.leaderboardFriends();
-    // this.leaderboardWeekly = go.leaderboardWeekly();
-    // this.leaderboardAlltime = go.leaderboardAlltime();
+    this.loadData();
+  }
 
+  public loadData(refresher?: any){
     // Daten holen
     this.go.leaderboard('weekly').subscribe((answer) => {
       console.log('Weekly', answer);
       this.leaderboardWeekly = answer.data.data;
       let entries: LeaderboardEntry[] = answer.data.data;
       entries.forEach(entry => {
-        if (entry.name == go.user) {
+        if (entry.name == this.go.user) {
           this.meWeekly = entry;
         }
       });
@@ -67,7 +67,7 @@ export class LeaderboardPage {
       this.leaderboardAlltime = answer.data.data;
       let entries: LeaderboardEntry[] = answer.data.data;
       entries.forEach(entry => {
-        if (entry.name == go.user) {
+        if (entry.name == this.go.user) {
           this.meAlltime = entry;
         }
       });
@@ -79,13 +79,19 @@ export class LeaderboardPage {
       this.leaderboardFriends = answer.data.data;
       let entries: LeaderboardEntry[] = answer.data.data;
       entries.forEach(entry => {
-        if (entry.name == go.user) {
+        if (entry.name == this.go.user) {
           this.meFriends = entry;
         }
       });
     },
     (err) => {console.error(err);});
 
+    
+    if (refresher) {
+      setTimeout(() => {
+        refresher.complete();
+      }, 2000);
+    }
   }
 
   ionViewDidLoad() {
