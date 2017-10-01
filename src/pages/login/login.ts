@@ -86,7 +86,7 @@ export class LoginPage {
         },
         (err) => {
           console.error(err);
-          this.showAlert('Fehler', 'Uhhh.... gar nicht gut...Frag die Profis');
+          this.showAlert('Error', 'Ask the professionals!');
         }
       );
     } else {
