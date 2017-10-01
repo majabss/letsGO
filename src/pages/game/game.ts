@@ -1,4 +1,4 @@
-import { FieldResponse, FieldEntry } from './../../interfaces';
+import { FieldResponse, FieldEntry, Answer } from './../../interfaces';
 import { LetsGOService } from './../../provider/letsGO.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -28,29 +28,45 @@ export class GamePage {
   public zeit: string;
   public posX: number = -1;
   public posY: number = -1;
+  public gameid: string;
+  public ich: number;
+  public amZug: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
     this.boardSize = 9;
     this.tileWidthHeight = 255/this.boardSize;
     this.initBoard(this.boardSize);
 
+    console.log(navParams.data[0]);
+    console.log(navParams.data[1]);
+    console.log(navParams.data[2]);
+    console.log(navParams.data[3]);
+
+    this.amZug = true;
+
     this.gegner = "lars";
-    this.amzug = "Du";
+    if(this.amZug){
+      this.amzug = "It's your turn.";
+    }else{
+      this.amzug = "It's " + this.gegner + " turn.";
+    }
     this.zeit = "24";
 
     console.log(navParams);
     
-    let gameid: string = navParams.get('id');
+    this.gameid = navParams.data;
     // this.gegner = navParams.get('name');
     //let amZug: string = navParams.get('amZug');
     // this.zeit = navParams.get('zeit');
 
-    this.go.field(gameid).subscribe(
+    this.go.field(this.gameid).subscribe(
       (response: FieldResponse) => {
         console.log(response);
-        // response.data.gamefield.forEach((entry: FieldEntry) => {
-        //   this.board[entry.koordX][entry.koordY] = entry.status;
-        // });
+        
+        this.ich = +response.data.IchBin;
+        response.data.gamefield.forEach((entry: FieldEntry) => {
+          this.board[entry.koordX][entry.koordY] = entry.status;
+        });
       },
       (err) => {
         console.log(err);
@@ -74,23 +90,35 @@ export class GamePage {
   }
 
   public setzen(i: number, j: number){
-    if(this.board[i][j] == 0){
-      if(this.posX != -1 && this.posY != -1){
-        this.board[this.posX][this.posY] = PlayerTile.FREE;
+    if(this.amZug){
+      if(this.board[i][j] == 0){
+        if(this.posX != -1 && this.posY != -1){
+          this.board[this.posX][this.posY] = PlayerTile.FREE;
+        }
+        this.posX = i;
+        this.posY = j;
+        this.board[this.posX][this.posY] = PlayerTile.GREEN;
       }
-      this.posX = i;
-      this.posY = j;
-      this.board[this.posX][this.posY] = PlayerTile.GREEN;
+      this.wert = !this.wert;
     }
-    this.wert = !this.wert;
   }
 
   public cancel(){
-    
+    this.navCtrl.pop();
   }
 
   public send(){
-    
+    this.go.turn(this.gameid, this.posX, this.posY).subscribe(
+      (answer: Answer) => {
+        console.log(answer);
+        if(answer.success){
+          this.board[this.posX][this.posY] = this.ich;
+          this.amZug = false;
+        }
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
 }

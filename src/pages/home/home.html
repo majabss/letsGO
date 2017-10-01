@@ -30,7 +30,7 @@
     [mainText]="myturn.otherplayername"
     [additionalText]="myturn.playtime"
     [secondRowText]="myturn.zugcount"
-    (click)="playGame(myturn.id)">
+    (click)="playGame(myturn.id, myturn.fieldsize, myturn.otherplayername, myturn.playtime)">
   </app-list-item>
 
   <ion-list-header>Invitations</ion-list-header>
