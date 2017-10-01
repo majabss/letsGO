@@ -25,7 +25,8 @@
           <div *ngIf="entry == 0" class="ellNone"></div>
           <div *ngIf="entry == 1" class="ellWhite"></div>
           <div *ngIf="entry == 2" class="ellBlack"></div>
-          <div *ngIf="entry == 3" class="ellGreen"></div>
+          <div *ngIf="entry == 3 && this.ich == 1" class="ellGreenWhite"></div>
+          <div *ngIf="entry == 3 && this.ich == 2" class="ellGreenBlack"></div>
         </div>
       </div>
       <button ion-button outline (click)="cancel()" color="danger" >Cancel</button>

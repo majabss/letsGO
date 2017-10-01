@@ -34,7 +34,7 @@
     [mainText]="myturn.otherplayername"
     [additionalText]="myturn.playtime"
     [secondRowText]="myturn.zugcount"
-    (click)="playGame(myturn.id, myturn.fieldsize, myturn.otherplayername, myturn.playtime)">
+    (click)="playGame(myturn.id, myturn.fieldsize, myturn.otherplayername, myturn.playtime, true)">
   </app-list-item>
 
   <ion-list-header>Invitations</ion-list-header>
@@ -44,7 +44,8 @@
 
   <ion-list-header>Opponent's Turn</ion-list-header>
   <app-list-item *ngFor="let notmyturn of allData.RunningOtherPlayerTurn" [mainText]="notmyturn.otherplayername" [additionalText]="notmyturn.playtime"
-    [secondRowText]="notmyturn.zugcount">
+    [secondRowText]="notmyturn.zugcount"
+    (click)="playGame(notmyturn.id, notmyturn.fieldsize, notmyturn.otherplayername, notmyturn.playtime, false)" >
   </app-list-item>
   <ion-list-header>Closed Games</ion-list-header>
   <app-list-item mainText="Jonas" additionalText="bla" secondRowText="Running">

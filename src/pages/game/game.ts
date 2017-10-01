@@ -33,37 +33,34 @@ export class GamePage {
   public amZug: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
-    this.boardSize = 9;
+    this.boardSize = navParams.data[1];
     this.tileWidthHeight = 255/this.boardSize;
     this.initBoard(this.boardSize);
 
-    console.log(navParams.data[0]);
-    console.log(navParams.data[1]);
-    console.log(navParams.data[2]);
-    console.log(navParams.data[3]);
+    this.gameid = navParams.data[0];
 
-    this.amZug = true;
+    console.log("id", navParams.data[0]); //id
+    console.log("fieldsize", navParams.data[1]); //fieldsize
+    console.log("otherplayername", navParams.data[2]); //otherplayername
+    console.log("playtime", navParams.data[3]); //playtime
+    console.log("amZug", navParams.data[4]); //amZug
 
-    this.gegner = "lars";
+    this.amZug = navParams.data[4];
+
+    this.gegner = navParams.data[2];
     if(this.amZug){
       this.amzug = "It's your turn.";
     }else{
       this.amzug = "It's " + this.gegner + " turn.";
     }
-    this.zeit = "24";
-
-    console.log(navParams);
+    this.zeit = navParams.data[3]+"h";
     
-    this.gameid = navParams.data;
-    // this.gegner = navParams.get('name');
-    //let amZug: string = navParams.get('amZug');
-    // this.zeit = navParams.get('zeit');
-
     this.go.field(this.gameid).subscribe(
       (response: FieldResponse) => {
-        console.log(response);
+        console.log("Field Response", response);
         
         this.ich = +response.data.IchBin;
+        console.log("ich: ", this.ich);
         response.data.gamefield.forEach((entry: FieldEntry) => {
           this.board[entry.koordX][entry.koordY] = entry.status;
         });
@@ -114,6 +111,7 @@ export class GamePage {
         if(answer.success){
           this.board[this.posX][this.posY] = this.ich;
           this.amZug = false;
+          this.amzug = "It's " + this.gegner + " turn.";
         }
       },
       (err) => {

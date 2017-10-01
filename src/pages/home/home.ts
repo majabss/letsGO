@@ -61,8 +61,8 @@ export class HomePage {
     }
   }
 
-  public playGame(id: string, fieldsize: string, otherplayername: string, playtime: string){
-    this.navCtrl.push(GamePage, [id, fieldsize, otherplayername, playtime]);
+  public playGame(id: string, fieldsize: string, otherplayername: string, playtime: string, amZug: boolean){
+    this.navCtrl.push(GamePage, [id, fieldsize, otherplayername, playtime, amZug]);
   }
 
   public invitation(id: string){

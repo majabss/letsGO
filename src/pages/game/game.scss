@@ -18,10 +18,18 @@ page-game {
   height: 100%; 
   border:2px solid black;   
 }
-.ellGreen {
+.ellGreenWhite {
 	border-radius: 50%;
   align-content: center;
   background: white;
+  width: 100%;
+  height: 100%; 
+  border:2px solid green;   
+}
+.ellGreenBlack {
+	border-radius: 50%;
+  align-content: center;
+  background: black;
   width: 100%;
   height: 100%; 
   border:2px solid green;   
