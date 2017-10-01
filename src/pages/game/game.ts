@@ -1,7 +1,7 @@
 import { FieldResponse, FieldEntry, Answer } from './../../interfaces';
 import { LetsGOService } from './../../provider/letsGO.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { PlayerTile } from '../../interfaces';
 
 /**
@@ -32,7 +32,7 @@ export class GamePage {
   public ich: number;
   public amZug: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService, public alertCtrl: AlertController) {
     this.boardSize = navParams.data[1];
     this.tileWidthHeight = 255/this.boardSize;
     this.initBoard(this.boardSize);
@@ -117,6 +117,49 @@ export class GamePage {
       (err) => {
         console.log(err);
       });
+  }
+
+  
+  public concede(){
+    let confirm = this.alertCtrl.create({
+      title: 'Concede?',
+      message: 'Do you want to concede?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Concede No ' + this.gameid);
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            console.log('Concede Yes ' + this.gameid);
+            this.go.concede(this.gameid).subscribe(
+              (data: Answer) => {
+                console.log(data);
+                if (data.success) {
+                  this.showAlert('You conceded!', data.message);
+                } else if (!data.success) {
+                  this.showAlert('Error', data.message);
+                }
+              }
+            );
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  public showAlert(title: string, subTitle: string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

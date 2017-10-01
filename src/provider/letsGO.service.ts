@@ -152,4 +152,9 @@ export class LetsGOService {
     public keepAlive() {
         return this.techService.getRequest('player/keepalive?sessionkey=' + this.sessionKey);
     }
+
+    public concede(id: string){
+        return this.techService.getRequest('/game/concede?sessionkey=' + this.sessionKey + "&id=" + id);
+    }
+
 }
