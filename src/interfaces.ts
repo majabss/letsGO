@@ -30,7 +30,8 @@ export interface FieldResponse{
 }
 
 export interface FieldData{
-    gamefield: FieldEntry[]
+    gamefield: FieldEntry[],
+    IchBin?: string
 } 
 
 export interface FieldEntry{
@@ -89,6 +90,5 @@ export interface RunningYourTurn {
     lastturn?: string,
     otherplayername?: string,
     playtime?: string,
-    zugcount?: string,
-    IchBin?: string
+    zugcount?: string
 }

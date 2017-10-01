@@ -1,4 +1,4 @@
-import { FieldResponse, FieldEntry } from './../../interfaces';
+import { FieldResponse, FieldEntry, Answer } from './../../interfaces';
 import { LetsGOService } from './../../provider/letsGO.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -28,29 +28,42 @@ export class GamePage {
   public zeit: string;
   public posX: number = -1;
   public posY: number = -1;
+  public gameid: string;
+  public ich: number;
+  public amZug: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService) {
-    this.boardSize = 9;
+    this.boardSize = navParams.data[1];
     this.tileWidthHeight = 255/this.boardSize;
     this.initBoard(this.boardSize);
 
-    this.gegner = "lars";
-    this.amzug = "Du";
-    this.zeit = "24";
+    this.gameid = navParams.data[0];
 
-    console.log(navParams);
+    console.log("id", navParams.data[0]); //id
+    console.log("fieldsize", navParams.data[1]); //fieldsize
+    console.log("otherplayername", navParams.data[2]); //otherplayername
+    console.log("playtime", navParams.data[3]); //playtime
+    console.log("amZug", navParams.data[4]); //amZug
+
+    this.amZug = navParams.data[4];
+
+    this.gegner = navParams.data[2];
+    if(this.amZug){
+      this.amzug = "It's your turn.";
+    }else{
+      this.amzug = "It's " + this.gegner + " turn.";
+    }
+    this.zeit = navParams.data[3]+"h";
     
-    let gameid: string = navParams.get('id');
-    // this.gegner = navParams.get('name');
-    //let amZug: string = navParams.get('amZug');
-    // this.zeit = navParams.get('zeit');
-
-    this.go.field(gameid).subscribe(
+    this.go.field(this.gameid).subscribe(
       (response: FieldResponse) => {
-        console.log(response);
-        // response.data.gamefield.forEach((entry: FieldEntry) => {
-        //   this.board[entry.koordX][entry.koordY] = entry.status;
-        // });
+        console.log("Field Response", response);
+        
+        this.ich = +response.data.IchBin;
+        console.log("ich: ", this.ich);
+        response.data.gamefield.forEach((entry: FieldEntry) => {
+          this.board[entry.koordX][entry.koordY] = entry.status;
+        });
       },
       (err) => {
         console.log(err);
@@ -74,23 +87,36 @@ export class GamePage {
   }
 
   public setzen(i: number, j: number){
-    if(this.board[i][j] == 0){
-      if(this.posX != -1 && this.posY != -1){
-        this.board[this.posX][this.posY] = PlayerTile.FREE;
+    if(this.amZug){
+      if(this.board[i][j] == 0){
+        if(this.posX != -1 && this.posY != -1){
+          this.board[this.posX][this.posY] = PlayerTile.FREE;
+        }
+        this.posX = i;
+        this.posY = j;
+        this.board[this.posX][this.posY] = PlayerTile.GREEN;
       }
-      this.posX = i;
-      this.posY = j;
-      this.board[this.posX][this.posY] = PlayerTile.GREEN;
+      this.wert = !this.wert;
     }
-    this.wert = !this.wert;
   }
 
   public cancel(){
-    
+    this.navCtrl.pop();
   }
 
   public send(){
-    
+    this.go.turn(this.gameid, this.posX, this.posY).subscribe(
+      (answer: Answer) => {
+        console.log(answer);
+        if(answer.success){
+          this.board[this.posX][this.posY] = this.ich;
+          this.amZug = false;
+          this.amzug = "It's " + this.gegner + " turn.";
+        }
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
 }

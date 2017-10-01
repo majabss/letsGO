@@ -121,7 +121,7 @@ export class LetsGOService {
         return this.techService.getRequest('/game/field?sessionkey=' + this.sessionKey + "&id=" + id);
     }
     
-    public turn(id: string, x: number, y: number): Observable<Response> {
+    public turn(id: string, x: number, y: number) {
         return this.techService.getRequest('/game/turn?sessionkey=' + this.sessionKey + "&id=" + id + "&x=" + x + "&y=" + y);
     }
 
@@ -147,5 +147,9 @@ export class LetsGOService {
 
     public startGame(userid: string, time: string, size: string) {
         return this.techService.getRequest('/game/create?sessionkey=' + this.sessionKey + '&userid=' + userid + '&time=' + time + '&size=' + size);
+    }
+
+    public keepAlive() {
+        return this.techService.getRequest('player/keepalive?sessionkey=' + this.sessionKey);
     }
 }
