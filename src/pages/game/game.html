@@ -15,9 +15,9 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-        <h2><b>Gegner:&nbsp;</b>{{gegner}}</h2>
-        <h2><b>Am Zug:&nbsp;</b>{{amzug}}</h2>
-        <h2><b>Zeit:&nbsp;</b>{{zeit}}</h2>
+        <h2><b>Opponent:&nbsp;</b>{{gegner}}</h2>
+        <h2><b>Current Turn:&nbsp;</b>{{amzug}}</h2>
+        <h2><b>Time left:&nbsp;</b>{{zeit}}</h2>
     </ion-card-header>
     <ion-card-content>
       <div class="flex-container" *ngFor="let row of board, let i = index">
@@ -30,7 +30,7 @@
         </div>
       </div>
       <button ion-button outline (click)="cancel()" color="danger" >Cancel</button>
-      <button ion-button outline (click)="send()" color="secondary" >Send</button>
+      <button ion-button outline (click)="send()" color="secondary" [disabled]="!amZug">Send</button>
     </ion-card-content>
   </ion-card>
 </ion-content>
