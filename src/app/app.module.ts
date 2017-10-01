@@ -21,8 +21,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-// export const BASEPATH = "h2726662.stratoserver.net";
-export const BASEPATH = 'http://172.16.2.131:8080';
+export const BASEPATH = "http://h2726662.stratoserver.net:8080";
+// export const BASEPATH = 'http://172.16.2.131:8080';
 
 @NgModule({
   declarations: [
