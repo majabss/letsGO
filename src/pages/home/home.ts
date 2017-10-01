@@ -31,9 +31,9 @@ export class HomePage {
   public allData: HomeScreenData = {};
 
   constructor(private app: App, public navCtrl: NavController, public navParams: NavParams, public go: LetsGOService, public alertCtrl: AlertController) {
-    
+    setInterval(this.keepAliveThread, 120000);
   }
-  
+
   ionViewDidLoad() {
     this.loadHomeScreen();
     this.player = this.go.user;
@@ -51,7 +51,6 @@ export class HomePage {
         console.log(err);
       }
     );
-    console.log('refresher', refresher);
     if (refresher) {
       setTimeout(() => {
         console.log('Async operation has ended');
@@ -61,11 +60,11 @@ export class HomePage {
     }
   }
 
-  public playGame(id: string){
+  public playGame(id: string) {
     this.navCtrl.push(GamePage, id);
   }
 
-  public invitation(id: string){
+  public invitation(id: string) {
     let confirm = this.alertCtrl.create({
       title: 'Invitation',
       message: 'Do you want to accept the invitation?',
@@ -79,19 +78,19 @@ export class HomePage {
         {
           text: 'Agree',
           handler: () => {
-            console.log('Agree '  + id);
+            console.log('Agree ' + id);
           }
         }
       ]
     });
     confirm.present();
-  } 
+  }
 
-  public accept(id: string){
+  public accept(id: string) {
     this.invitation(id);
     this.go.accept(id).subscribe(
       (answer: Answer) => {
-        if(answer.success == false){
+        if (answer.success == false) {
           console.log(answer);
         }
       },
@@ -100,7 +99,7 @@ export class HomePage {
       });
   }
 
-  public decline(id: string){
+  public decline(id: string) {
 
   }
 
@@ -112,5 +111,28 @@ export class HomePage {
     this.app.getRootNav().push(NewFriendPage);
   }
 
+  public keepAliveThread() {
+    if (this.go) {
+      this.go.keepAlive().subscribe(
+        (answer: Answer) => {
+          console.log('keep Alive', answer);
+          if (answer.success) {
   
+          } else if (!answer.success) {
+            this.showAlert('Error', answer.message);
+          }
+        }
+      );
+    }
+  }
+
+  public showAlert(title: string, subTitle: string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
 }
