@@ -21,7 +21,21 @@ export class LeaderboardPage {
   public leaderboardFriends: LeaderboardEntry[] = [];
   public leaderboardWeekly: LeaderboardEntry[] = [];
   public leaderboardAlltime: LeaderboardEntry[] = [];
-  public me: LeaderboardEntry = {
+  public meFriends: LeaderboardEntry = {
+    id: '',
+    name: '',
+    atp: '',
+    wp: '',
+    rank: ''
+  }
+  public meWeekly: LeaderboardEntry = {
+    id: '',
+    name: '',
+    atp: '',
+    wp: '',
+    rank: ''
+  }  
+  public meAlltime: LeaderboardEntry = {
     id: '',
     name: '',
     atp: '',
@@ -42,7 +56,7 @@ export class LeaderboardPage {
       let entries: LeaderboardEntry[] = answer.data.data;
       entries.forEach(entry => {
         if (entry.name == go.user) {
-          this.me = entry;
+          this.meWeekly = entry;
         }
       });
     },
@@ -51,12 +65,24 @@ export class LeaderboardPage {
     this.go.leaderboard('alltime').subscribe(answer => {
       console.log('Alltime', answer);
       this.leaderboardAlltime = answer.data.data;
+      let entries: LeaderboardEntry[] = answer.data.data;
+      entries.forEach(entry => {
+        if (entry.name == go.user) {
+          this.meAlltime = entry;
+        }
+      });
     },
     (err) => {console.error(err);});
 
     this.go.leaderboard('friends').subscribe(answer => {
       console.log('Friends', answer);
       this.leaderboardFriends = answer.data.data;
+      let entries: LeaderboardEntry[] = answer.data.data;
+      entries.forEach(entry => {
+        if (entry.name == go.user) {
+          this.meFriends = entry;
+        }
+      });
     },
     (err) => {console.error(err);});
 
