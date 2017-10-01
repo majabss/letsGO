@@ -45,7 +45,7 @@ export class HomePage {
         this.allData = answer.data;
         this.scoreAlltime = this.allData.alltimepoints;
         this.scoreWeek = this.allData.weeklypoints;
-        console.log('answer', this.allData);
+        console.log('LoadHomePageData', this.allData);
       },
       (err) => {
         console.log(err);
@@ -65,7 +65,7 @@ export class HomePage {
     this.navCtrl.push(GamePage, id);
   }
 
-  public invitation(id: string){
+  public reactToInvitation(id: string){
     let confirm = this.alertCtrl.create({
       title: 'Invitation',
       message: 'Do you want to accept the invitation?',
@@ -79,7 +79,8 @@ export class HomePage {
         {
           text: 'Agree',
           handler: () => {
-            console.log('Agree '  + id);
+            console.log('Agree ' + id);
+            this.accept(id);
           }
         }
       ]
@@ -88,7 +89,6 @@ export class HomePage {
   } 
 
   public accept(id: string){
-    this.invitation(id);
     this.go.accept(id).subscribe(
       (answer: Answer) => {
         if(answer.success == false){
@@ -101,7 +101,15 @@ export class HomePage {
   }
 
   public decline(id: string){
-
+    this.go.decline(id).subscribe(
+      (answer: Answer) => {
+        if(answer.success == false){
+          console.log(answer);
+        }
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
   public newGame() {

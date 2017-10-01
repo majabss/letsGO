@@ -36,16 +36,17 @@
 
   <ion-list-header>Invitations</ion-list-header>
   <app-list-item *ngFor="let invitation of allData.GotInvited" [mainText]="invitation.otherplayername" [additionalText]="invitation.playtime"
-    [secondRowText]="invitation.fieldsize" (click)="accept(invitation.id)">
+    [secondRowText]="invitation.fieldsize" (click)="reactToInvitation(invitation.id)">
   </app-list-item>
 
   <ion-list-header>Opponent's Turn</ion-list-header>
-  <app-list-item *ngFor="let notmyturn of allData.RunningOtherPlayerTurn" [mainText]="notmyturn.otherplayername" [additionalText]="notmyturn.playtime"
-    [secondRowText]="notmyturn.zugcount">
-  </app-list-item>
+    <app-list-item *ngFor="let notmyturn of allData.RunningOtherPlayerTurn" [mainText]="notmyturn.otherplayername" [additionalText]="notmyturn.playtime"
+      [secondRowText]="notmyturn.zugcount">
+    </app-list-item>
   <ion-list-header>Closed Games</ion-list-header>
-  <app-list-item mainText="Jonas" additionalText="bla" secondRowText="Running">
-  </app-list-item>
+    <app-list-item *ngFor="let closedgame of allData.History" [mainText]="closedgame.otherplayername" [additionalText]="closedgame.playtime"
+      [secondRowText]="closedgame.zugcount">
+    </app-list-item>
 
   <ion-fab right bottom>
     <button ion-fab color="blue"><ion-icon name="add"></ion-icon></button>
